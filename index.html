@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta name="generator" content="Hugo 0.79.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/eos-icons/dist/css/eos-icons.css">
+    <link rel="stylesheet" href="/css/eos-style.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+    <title>EOS - Layout</title></head>
+  <body><aside class="main-menu js-main-menu">
+    <div class="mm-navigation-container">
+      <header><a class="hide-collapsed" href="https://www.eosdesignsystem.com/"><img src="images/suse-product-brand.svg" alt="SUSE product brand logotype"></a>
+        <div class="mm-navigation-close js-sidebar-toggle"><i class="eos-icons js-sidebar-tooltip js-tooltip" data-placement="bottom" title="">menu</i></div>
+      </header>
+
+      <div class="nav-wrap">
+        <ul class="menu-togglable no-list-style">
+          <li class="menu-item">
+            <div class="menu-element">
+                <span class="main-collapsed-title">Dashboard</span>
+            </div>
+            <a class="menu-title js-select-current-parent js-feature-flag" href="/">
+                <i class="eos-icons">home</i>
+                <span class="menu-title-content">Tool Map</span>
+            </a>
+          </li>
+
+          
+          <hr />
+            <li class="menu-item menu-dropdown">
+                <input class="js-dropdown-toggle" id="abstractions-toggle" type="checkbox" value="checked">
+                <label class="menu-title" for="abstractions-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Abstractions</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+                <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">abstractions</li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/abstractions/devspace/">Dev space</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/abstractions/backstage/">Backstage</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/abstractions/skaffold/">Skaffold</a></li>
+                
+                </ul>
+            </li>
+          
+          <hr />
+            <li class="menu-item menu-dropdown">
+                <input class="js-dropdown-toggle" id="cloud-based-editors-toggle" type="checkbox" value="checked">
+                <label class="menu-title" for="cloud-based-editors-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Cloud based editors</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+                <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">cloud-based-editors</li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/cloud-based-editors/jupyter-notebooks/">Jupyter notebooks</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/cloud-based-editors/gitlab/">Gitlab</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/cloud-based-editors/code-spaces/">Code spaces</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/cloud-based-editors/gitpod/">Gitpod</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/cloud-based-editors/atheos/">Atheos</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/cloud-based-editors/code-server/">Code server</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/cloud-based-editors/eclipse-che/">Eclipse che</a></li>
+                
+                </ul>
+            </li>
+          
+          <hr />
+            <li class="menu-item menu-dropdown">
+                <input class="js-dropdown-toggle" id="container-builds-toggle" type="checkbox" value="checked">
+                <label class="menu-title" for="container-builds-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Container builds</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+                <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">container-builds</li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/container-builds/cloudnative-buildpacks/">Cloud native buildpacks</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/container-builds/kaniko/">Kaniko</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/container-builds/podman/">Podman</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/container-builds/docker/">Docker</a></li>
+                
+                </ul>
+            </li>
+          
+          <hr />
+            <li class="menu-item menu-dropdown">
+                <input class="js-dropdown-toggle" id="debugging-and-observability-toggle" type="checkbox" value="checked">
+                <label class="menu-title" for="debugging-and-observability-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Debugging and observability</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+                <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">debugging-and-observability</li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/debugging-and-observability/rookout/">Rookout</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/debugging-and-observability/pixie/">Pixie</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/debugging-and-observability/telepresence/">Telepresence</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/debugging-and-observability/opentelemetry/">Opentelemetry</a></li>
+                
+                </ul>
+            </li>
+          
+          <hr />
+            <li class="menu-item menu-dropdown">
+                <input class="js-dropdown-toggle" id="misc-toggle" type="checkbox" value="checked">
+                <label class="menu-title" for="misc-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Misc</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+                <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">misc</li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/misc/svc-cat/">Service catalog</a></li>
+                
+                </ul>
+            </li>
+          
+          <hr />
+            <li class="menu-item menu-dropdown">
+                <input class="js-dropdown-toggle" id="pipelines-toggle" type="checkbox" value="checked">
+                <label class="menu-title" for="pipelines-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Pipelines</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+                <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">pipelines</li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/pipelines/jenkins-x/">Jenkins x</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/pipelines/drone/">Drone</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/pipelines/argo/">Argo</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/pipelines/tekton/">Tekton</a></li>
+                
+                </ul>
+            </li>
+          
+          <hr />
+            <li class="menu-item menu-dropdown">
+                <input class="js-dropdown-toggle" id="platforms-toggle" type="checkbox" value="checked">
+                <label class="menu-title" for="platforms-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Platforms</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+                <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">platforms</li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/crossplane/">Crossplane</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/kubevela/">Kube vela</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/flynn/">Flynn</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/cf4k8s/">Cf4k8s</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/tsuru/">Tsuru</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/openfaas-cloud/">Open faa s cloud</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/openshift-odo/">Open shift odo</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/gitlab-autodevops/">Gitlab auto devops</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/rio/">Rio</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/waypoint/">Waypoint</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/heroku/">Heroku</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/kubecf/">Kube c f</a></li>
+                
+                </ul>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+    <footer class="footer-side-menu">
+        <ul class="footer-list">
+        <li class="footer-list-item"><a class="footer-link" href="/cookies-policy" data-event-category="Internal link" data-event-action="Cookies policy" data-event-label="Footer">Cookie policy</a></li>
+        <li class="footer-list-item"><a class="footer-link" href="https://eosdesignsystem.com/" data-event-category="External link" data-event-action="Link EOS website" data-event-label="Footer" target="_blank" rel="noreferrer nonopener"><img class="js-tooltip" src="/images/eos-logo.svg" data-toggle="tooltip" data-html="true" title="Visit our website" alt="EOS icon"></a></li>
+        </ul>
+    </footer>
+</aside><div class="mobile-menu js-mobile-menu">
+    <header><a href="/"><img src="images/suse-product-brand.svg" alt="SUSE product brand logotype"></a>
+        <div class="burger-menu js-burger-menu"><a><i class="eos-icons">menu</i></a></div>
+    </header>
+    <nav class="display-nav">
+        <div class="nav-wrap">
+        <ul class="menu-togglable no-list-style">
+            <li class="menu-item">
+          <div class="menu-element"><span class="main-collapsed-title">Tool Map</span></div><a class="menu-title js-select-current-parent js-feature-flag" href="/"><i class="eos-icons">home</i><span class="menu-title-content">Tool Map</span></a>
+          
+          
+  
+          <li class="menu-item menu-dropdown">
+            <input class="js-dropdown-toggle" id="documentation-toggle" type="checkbox">
+            <label class="menu-title" for="documentation-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Abstractions</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+            <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Abstractions</li>
+
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/abstractions/devspace/">Dev space</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/abstractions/backstage/">Backstage</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/abstractions/skaffold/">Skaffold</a></li>
+                
+            </ul>
+          </li>
+          
+  
+          <li class="menu-item menu-dropdown">
+            <input class="js-dropdown-toggle" id="documentation-toggle" type="checkbox">
+            <label class="menu-title" for="documentation-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Cloud based editors</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+            <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Cloud based editors</li>
+
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/cloud-based-editors/jupyter-notebooks/">Jupyter notebooks</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/cloud-based-editors/gitlab/">Gitlab</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/cloud-based-editors/code-spaces/">Code spaces</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/cloud-based-editors/gitpod/">Gitpod</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/cloud-based-editors/atheos/">Atheos</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/cloud-based-editors/code-server/">Code server</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/cloud-based-editors/eclipse-che/">Eclipse che</a></li>
+                
+            </ul>
+          </li>
+          
+  
+          <li class="menu-item menu-dropdown">
+            <input class="js-dropdown-toggle" id="documentation-toggle" type="checkbox">
+            <label class="menu-title" for="documentation-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Container builds</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+            <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Container builds</li>
+
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/container-builds/cloudnative-buildpacks/">Cloud native buildpacks</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/container-builds/kaniko/">Kaniko</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/container-builds/podman/">Podman</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/container-builds/docker/">Docker</a></li>
+                
+            </ul>
+          </li>
+          
+  
+          <li class="menu-item menu-dropdown">
+            <input class="js-dropdown-toggle" id="documentation-toggle" type="checkbox">
+            <label class="menu-title" for="documentation-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Debugging and observability</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+            <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Debugging and observability</li>
+
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/debugging-and-observability/rookout/">Rookout</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/debugging-and-observability/pixie/">Pixie</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/debugging-and-observability/telepresence/">Telepresence</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/debugging-and-observability/opentelemetry/">Opentelemetry</a></li>
+                
+            </ul>
+          </li>
+          
+  
+          <li class="menu-item menu-dropdown">
+            <input class="js-dropdown-toggle" id="documentation-toggle" type="checkbox">
+            <label class="menu-title" for="documentation-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Misc</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+            <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Misc</li>
+
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/misc/svc-cat/">Service catalog</a></li>
+                
+            </ul>
+          </li>
+          
+  
+          <li class="menu-item menu-dropdown">
+            <input class="js-dropdown-toggle" id="documentation-toggle" type="checkbox">
+            <label class="menu-title" for="documentation-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Pipelines</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+            <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Pipelines</li>
+
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/pipelines/jenkins-x/">Jenkins x</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/pipelines/drone/">Drone</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/pipelines/argo/">Argo</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/pipelines/tekton/">Tekton</a></li>
+                
+            </ul>
+          </li>
+          
+  
+          <li class="menu-item menu-dropdown">
+            <input class="js-dropdown-toggle" id="documentation-toggle" type="checkbox">
+            <label class="menu-title" for="documentation-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Platforms</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+            <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Platforms</li>
+
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/crossplane/">Crossplane</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/kubevela/">Kube vela</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/flynn/">Flynn</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/cf4k8s/">Cf4k8s</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/tsuru/">Tsuru</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/openfaas-cloud/">Open faa s cloud</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/openshift-odo/">Open shift odo</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/gitlab-autodevops/">Gitlab auto devops</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/rio/">Rio</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/waypoint/">Waypoint</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/heroku/">Heroku</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/platforms/kubecf/">Kube c f</a></li>
+                
+            </ul>
+          </li>
+          
+        </ul>
+      </div>
+    </nav>
+  </div><section class="content"><div class="submenu js-submenu-section">
+
+</div><div class="container"><div class="tool-map">
+  
+  <section class="tool-category" id="cat-abstractions">
+    <header> Developer Abstractions </header>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/abstractions/devspace/" > 
+              Dev space
+            </a>
+          </h5>
+          <p class='card-text'>DevSpace is an open-source developer tool for Kubernetes that lets you develop and deploy cloud-native software faster.</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/abstractions/backstage/" > 
+              Backstage
+            </a>
+          </h5>
+          <p class='card-text'>Backstage is an open platform for building developer portals</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/abstractions/skaffold/" > 
+              Skaffold
+            </a>
+          </h5>
+          <p class='card-text'>Easy and Repeatable Kubernetes Development</p>
+        </div>
+      </div>
+    
+  </section>
+  
+  <section class="tool-category" id="cat-cloud-based-editors">
+    <header> Code Editors </header>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/cloud-based-editors/jupyter-notebooks/" > 
+              Jupyter notebooks
+            </a>
+          </h5>
+          <p class='card-text'>JupyterLab computational environment.</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/cloud-based-editors/gitlab/" > 
+              Gitlab
+            </a>
+          </h5>
+          <p class='card-text'></p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/cloud-based-editors/code-spaces/" > 
+              Code spaces
+            </a>
+          </h5>
+          <p class='card-text'>Devops Workspaces in a Box</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/cloud-based-editors/gitpod/" > 
+              Gitpod
+            </a>
+          </h5>
+          <p class='card-text'>Gitpod automates the provisioning of ready-to-code development environments.</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/cloud-based-editors/atheos/" > 
+              Atheos
+            </a>
+          </h5>
+          <p class='card-text'>A self-hosted browser-based cloud IDE, updated from Codiad IDE</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/cloud-based-editors/code-server/" > 
+              Code server
+            </a>
+          </h5>
+          <p class='card-text'>VS Code in the browser</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/cloud-based-editors/eclipse-che/" > 
+              Eclipse che
+            </a>
+          </h5>
+          <p class='card-text'>The Kubernetes-Native IDE for Developer Teams</p>
+        </div>
+      </div>
+    
+  </section>
+  
+  <section class="tool-category" id="cat-container-builds">
+    <header> Container Builds </header>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/container-builds/cloudnative-buildpacks/" > 
+              Cloud native buildpacks
+            </a>
+          </h5>
+          <p class='card-text'></p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/container-builds/kaniko/" > 
+              Kaniko
+            </a>
+          </h5>
+          <p class='card-text'>Build Container Images In Kubernetes</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/container-builds/podman/" > 
+              Podman
+            </a>
+          </h5>
+          <p class='card-text'>Podman: A tool for managing OCI containers and pods</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/container-builds/docker/" > 
+              Docker
+            </a>
+          </h5>
+          <p class='card-text'>Docker provides a simple and powerful developer experience, workflows and collaboration for creating applications.</p>
+        </div>
+      </div>
+    
+  </section>
+  
+  <section class="tool-category" id="cat-debugging-and-observability">
+    <header> Debugging And Observability </header>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/debugging-and-observability/rookout/" > 
+              Rookout
+            </a>
+          </h5>
+          <p class='card-text'>Debug anything, anywhere, Effortlessly.</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/debugging-and-observability/pixie/" > 
+              Pixie
+            </a>
+          </h5>
+          <p class='card-text'>Instant Kubernetes-Native Application Observability</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/debugging-and-observability/telepresence/" > 
+              Telepresence
+            </a>
+          </h5>
+          <p class='card-text'>Local development against a remote Kubernetes or OpenShift cluster</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/debugging-and-observability/opentelemetry/" > 
+              Opentelemetry
+            </a>
+          </h5>
+          <p class='card-text'>OpenTelemetry makes robust, portable telemetry a built-in feature of cloud-native software.</p>
+        </div>
+      </div>
+    
+  </section>
+  
+  <section class="tool-category" id="cat-misc">
+    <header> Miscellaneous </header>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/misc/svc-cat/" > 
+              Service catalog
+            </a>
+          </h5>
+          <p class='card-text'>Consume services in Kubernetes using the Open Service Broker API</p>
+        </div>
+      </div>
+    
+  </section>
+  
+  <section class="tool-category" id="cat-pipelines">
+    <header> CI/CD Pipelines </header>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/pipelines/jenkins-x/" > 
+              Jenkins x
+            </a>
+          </h5>
+          <p class='card-text'>CI/CD solution for modern cloud applications on Kubernetes</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/pipelines/drone/" > 
+              Drone
+            </a>
+          </h5>
+          <p class='card-text'>Drone is a Container-Native, Continuous Delivery Platform</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/pipelines/argo/" > 
+              Argo
+            </a>
+          </h5>
+          <p class='card-text'>Argo Workflows: Get stuff done with Kubernetes.</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/pipelines/tekton/" > 
+              Tekton
+            </a>
+          </h5>
+          <p class='card-text'>Tekton is a powerful and flexible open-source framework for creating CI/CD systems, allowing developers to build, test, and deploy across cloud providers and on-premise systems</p>
+        </div>
+      </div>
+    
+  </section>
+  
+  <section class="tool-category" id="cat-platforms">
+    <header> Platforms </header>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/platforms/crossplane/" > 
+              Crossplane
+            </a>
+          </h5>
+          <p class='card-text'>Manage any infrastructure your applications need directly from Kubernetes</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/platforms/kubevela/" > 
+              Kube vela
+            </a>
+          </h5>
+          <p class='card-text'>An Easy-to-use yet Highly Extensible App Platform based on Kubernetes and Open Application Model.</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/platforms/flynn/" > 
+              Flynn
+            </a>
+          </h5>
+          <p class='card-text'>A next generation open source platform as a service (PaaS)</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/platforms/cf4k8s/" > 
+              Cf4k8s
+            </a>
+          </h5>
+          <p class='card-text'>The open source deployment manifest for Cloud Foundry on Kubernetes</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/platforms/tsuru/" > 
+              Tsuru
+            </a>
+          </h5>
+          <p class='card-text'>Open source, extensible and Docker-based Platform as a Service (PaaS)</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/platforms/openfaas-cloud/" > 
+              Open faa s cloud
+            </a>
+          </h5>
+          <p class='card-text'>The Multi-user OpenFaaS Platform</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/platforms/openshift-odo/" > 
+              Open shift odo
+            </a>
+          </h5>
+          <p class='card-text'>Developer-focused CLI for OpenShift and Kubernetes</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/platforms/gitlab-autodevops/" > 
+              Gitlab auto devops
+            </a>
+          </h5>
+          <p class='card-text'></p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/platforms/rio/" > 
+              Rio
+            </a>
+          </h5>
+          <p class='card-text'>Application Deployment Engine for Kubernetes</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/platforms/waypoint/" > 
+              Waypoint
+            </a>
+          </h5>
+          <p class='card-text'>A tool to build, deploy, and release any application on any platform.</p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/platforms/heroku/" > 
+              Heroku
+            </a>
+          </h5>
+          <p class='card-text'></p>
+        </div>
+      </div>
+    
+      <div class='card'>
+        
+        <div class="isDraft"></div>
+        
+        <img class='card-img' src='https://res.cloudinary.com/eosdesignsystem/image/upload/v1602233106/SUSE/suse-eg.svg' alt='SUSE-logo' />
+        <div class='card-body'>
+          <h5 class='card-title'>
+            <a href="http://localhost:1313/platforms/kubecf/" > 
+              Kube c f
+            </a>
+          </h5>
+          <p class='card-text'>Cloud Foundry on Kubernetes</p>
+        </div>
+      </div>
+    
+  </section>
+  
+</div>
+<p>Test Index</p>
+</div>
+    </section>
+    <footer class="footer-content js-footer-content"><ul class="footer-list">
+    <li class="footer-list-item"><a class="footer-link" href="/cookies-policy" data-event-category="Internal link" data-event-action="Cookies policy" data-event-label="Footer">Cookie policy</a></li>
+    <li class="footer-list-item"><a class="footer-link" href="https://eosdesignsystem.com/" data-event-category="External link" data-event-action="Link EOS website" data-event-label="Footer" target="_blank" rel="noreferrer nonopener"><img class="js-tooltip" src="images/eos-logo.svg" data-toggle="tooltip" data-html="true" title="Visit our website" alt="EOS icon"></a></li>
+</ul></footer>
+  </body>
+</html>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="/js/index.js"></script>
+<script src="/js/main.js"></script>

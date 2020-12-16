@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>debugging-and-observability on Developer Tools</title>
+    <link>http://localhost:1313/debugging-and-observability/</link>
+    <description>Recent content in debugging-and-observability on Developer Tools</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 04 Dec 2020 08:48:59 -0800</lastBuildDate><atom:link href="http://localhost:1313/debugging-and-observability/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rookout</title>
+      <link>http://localhost:1313/debugging-and-observability/rookout/</link>
+      <pubDate>Mon, 07 Dec 2020 08:05:43 -0800</pubDate>
+      
+      <guid>http://localhost:1313/debugging-and-observability/rookout/</guid>
+      <description>Summary Experience Review Pros Cons Conclusion </description>
+    </item>
+    
+    <item>
+      <title>Pixie</title>
+      <link>http://localhost:1313/debugging-and-observability/pixie/</link>
+      <pubDate>Mon, 07 Dec 2020 08:05:39 -0800</pubDate>
+      
+      <guid>http://localhost:1313/debugging-and-observability/pixie/</guid>
+      <description>Summary Experience Review Pros Cons Conclusion </description>
+    </item>
+    
+    <item>
+      <title>Telepresence</title>
+      <link>http://localhost:1313/debugging-and-observability/telepresence/</link>
+      <pubDate>Mon, 07 Dec 2020 08:05:30 -0800</pubDate>
+      
+      <guid>http://localhost:1313/debugging-and-observability/telepresence/</guid>
+      <description>Summary Experience Review Pros Cons Conclusion </description>
+    </item>
+    
+    <item>
+      <title>Opentelemetry</title>
+      <link>http://localhost:1313/debugging-and-observability/opentelemetry/</link>
+      <pubDate>Mon, 07 Dec 2020 08:05:22 -0800</pubDate>
+      
+      <guid>http://localhost:1313/debugging-and-observability/opentelemetry/</guid>
+      <description>Summary Experience Review Pros Cons Conclusion </description>
+    </item>
+    
+  </channel>
+</rss>

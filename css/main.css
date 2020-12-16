@@ -1,0 +1,109 @@
+.container {
+  max-width: 1440px;
+}
+
+.tool-map {
+  display: grid;
+  /* grid-template-columns: repeat(24, 1fr);
+  grid-template-rows: auto; */
+
+
+  grid-template-areas: 
+    "pipelines pipelines pipelines pipelines pipelines pipelines debugging debugging debugging debugging misc "
+    "editors   editors   editors   editors   editors   editors   editors   editors   editors   editors   editors "
+    "builds   builds   builds   builds   builds   builds   abstractions   abstractions   abstractions   abstractions   abstractions "
+    "platforms   platforms   platforms   platforms   platforms   platforms   platforms   platforms   platforms   platforms   platforms ";
+
+  grid-gap: 12px;
+}
+
+
+
+.tool-category {
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 96px) ;
+  grid-template-rows: 1.5em repeat(auto-fill, 128px);
+  grid-gap: 8px;
+
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.tool-category > header {
+  grid-column-start: 1;
+  grid-column-end: -1;
+  width: 100%;
+  /* background: lightgrey; */
+  text-transform: capitalize;
+
+  font-weight: bolder;
+  font-family: sans-serif;
+}
+
+.menu-title {
+
+  text-transform: capitalize;
+}
+
+.card {
+  align-self: center;
+
+  border: 1px solid black;
+  border-radius: 4px;
+  height: 128px;
+}
+
+
+#cat-pipelines {
+  grid-area: pipelines;
+}
+#cat-debugging-and-observability {
+  grid-area: debugging;
+}
+#cat-cloud-based-editors {
+  grid-area: editors;
+}
+#cat-container-builds {
+  grid-area: builds;
+}
+#cat-abstractions {
+  grid-area: abstractions;
+}
+#cat-platforms {
+  grid-area: platforms;
+}
+#cat-Misc {
+  grid-area: misc;
+}
+
+
+
+.card {
+  font-size: 8px;
+}
+
+.card-body {
+  padding: .75rem
+}
+
+.card-img {
+  /* width: 33%; */
+}
+
+.card >.isDraft {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.2);
+  position: absolute;
+}
+
+.card-title {
+  margin-top: -6px;
+  text-align: center;
+}
+
+.card-text {
+  display: none;
+}
