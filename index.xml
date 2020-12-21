@@ -40,7 +40,9 @@
       <pubDate>Mon, 07 Dec 2020 08:06:21 -0800</pubDate>
       
       <guid>http://localhost:1313/pipelines/tekton/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <description>Summary Tekton is a Kubernetes Native CI/CD runner. It uses Custom Resource Definitions (CRDs) to store it&amp;rsquo;s configuration and control script running.
+It allows for creating pipelines of tasks that are decoupled from the task definition itself. This allows for a powerful way to break apart the build process into composable bits.
+Experience Note: I&amp;rsquo;ve actually used Tekton a few times before and it&amp;rsquo;s my preferred script runner as I&amp;rsquo;m the most comfortable with it and I have a personal library of tasks.</description>
     </item>
     
     <item>
