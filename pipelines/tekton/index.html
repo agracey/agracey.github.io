@@ -39,6 +39,8 @@
                 
                   <li><a class="menu-title js-select-current js-feature-flag " href="/abstractions/devspace/">DevSpace</a></li>
                 
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/abstractions/helm/">Helm</a></li>
+                
                   <li><a class="menu-title js-select-current js-feature-flag " href="/abstractions/backstage/">Backstage</a></li>
                 
                   <li><a class="menu-title js-select-current js-feature-flag " href="/abstractions/skaffold/">Skaffold</a></li>
@@ -114,6 +116,8 @@
                 <li class="menu-collapsed-title">misc</li>
                 
                   <li><a class="menu-title js-select-current js-feature-flag " href="/misc/svc-cat/">Service Catalog</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/misc/rancher-desktop/"></a></li>
                 
                 </ul>
             </li>
@@ -200,6 +204,8 @@
                 
                   <li><a class="menu-title js-select-current js-feature-flag " href="/abstractions/devspace/">DevSpace</a></li>
                 
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/abstractions/helm/">Helm</a></li>
+                
                   <li><a class="menu-title js-select-current js-feature-flag " href="/abstractions/backstage/">Backstage</a></li>
                 
                   <li><a class="menu-title js-select-current js-feature-flag " href="/abstractions/skaffold/">Skaffold</a></li>
@@ -280,6 +286,8 @@
                 
                   <li><a class="menu-title js-select-current js-feature-flag " href="/misc/svc-cat/">Service Catalog</a></li>
                 
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/misc/rancher-desktop/"></a></li>
+                
             </ul>
           </li>
           
@@ -348,16 +356,39 @@
 <h1 id="experience">Experience</h1>
 <p>Note: I&rsquo;ve actually used Tekton a few times before and it&rsquo;s my preferred script runner as I&rsquo;m the most comfortable with it and I have a personal library of tasks.</p>
 <h1 id="review">Review</h1>
+<h2 id="why-should-i-care">Why should I care</h2>
+<h2 id="prior-knowledge-needed">Prior knowledge needed</h2>
+<ul>
+<li>Kubernetes Basics</li>
+<li>Container Basics</li>
+<li>YAML</li>
+<li>Custom Resource Definitions</li>
+<li>Operator Pattern (Kinda)</li>
+<li>CI/CD Basics</li>
+<li>Kubernetes Service Accounts &amp; RBAC</li>
+<li>Kubernetes Volumes</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<h3 id="what-privs-are-needed-to-install--use">What privs are needed to install / use</h3>
+<ul>
+<li>Cluster Admin to create CRDs</li>
+<li></li>
+</ul>
+<h3 id="heading"></h3>
 <h2 id="pros">Pros</h2>
 <ul>
 <li>Highly composable</li>
+<li>Very powerful with good abstractions</li>
+<li></li>
 </ul>
 <h2 id="cons">Cons</h2>
 <ul>
 <li>As it is based on Kubernetes and CRDs, there is no way to use Tekton outside of Kubernetes.</li>
-<li></li>
+<li>Needs cluster admin access to install and operator</li>
+<li>Not beginner friendly (Steep learning curve)</li>
 </ul>
 <h1 id="conclusion">Conclusion</h1>
+<p>While Tekton is my personal choice because it gives a set of abstractions that I like to thing with, it&rsquo;s potentially a poor choice for a newer developer or someone just looking to play around  with CI/CD ideas.</p>
 </div>
     </section>
     <footer class="footer-content js-footer-content"><ul class="footer-list">
