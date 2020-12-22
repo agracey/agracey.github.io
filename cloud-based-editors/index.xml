@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>cloud-based-editors on Developer Tools</title>
+    <title>cloud-based-editors on Cloud Native Developer Tools</title>
     <link>http://localhost:1313/cloud-based-editors/</link>
-    <description>Recent content in cloud-based-editors on Developer Tools</description>
+    <description>Recent content in cloud-based-editors on Cloud Native Developer Tools</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 04 Dec 2020 08:48:59 -0800</lastBuildDate><atom:link href="http://localhost:1313/cloud-based-editors/index.xml" rel="self" type="application/rss+xml" />
