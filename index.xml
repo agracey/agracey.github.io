@@ -8,329 +8,329 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 26 Mar 2019 08:47:11 +0100</lastBuildDate><atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Tekton</title>
+      <link>http://localhost:1313/reviews/pipelines/tekton/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/reviews/pipelines/tekton/</guid>
+      <description>Tekton is a Kubernetes Native CI/CD runner. It uses Custom Resource Definitions (CRDs) to store it&amp;rsquo;s configuration and control script running.
+It allows for creating pipelines of tasks that are decoupled from the task definition itself. This allows for a powerful way to break apart the build process into composable bits.
+Experience link  Note: I&amp;rsquo;ve actually used Tekton a few times before and it&amp;rsquo;s my preferred script runner as I&amp;rsquo;m the most comfortable with it and I have a personal library of tasks.</description>
+    </item>
+    
+    <item>
       <title>Jenkins X</title>
-      <link>http://localhost:1313/pipelines/jenkins-x/</link>
+      <link>http://localhost:1313/reviews/pipelines/jenkins-x/</link>
       <pubDate>Mon, 07 Dec 2020 08:06:33 -0800</pubDate>
       
-      <guid>http://localhost:1313/pipelines/jenkins-x/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/pipelines/jenkins-x/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Drone</title>
-      <link>http://localhost:1313/pipelines/drone/</link>
+      <link>http://localhost:1313/reviews/pipelines/drone/</link>
       <pubDate>Mon, 07 Dec 2020 08:06:28 -0800</pubDate>
       
-      <guid>http://localhost:1313/pipelines/drone/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/pipelines/drone/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Argo</title>
-      <link>http://localhost:1313/pipelines/argo/</link>
+      <link>http://localhost:1313/reviews/pipelines/argo/</link>
       <pubDate>Mon, 07 Dec 2020 08:06:24 -0800</pubDate>
       
-      <guid>http://localhost:1313/pipelines/argo/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
-    </item>
-    
-    <item>
-      <title>Tekton</title>
-      <link>http://localhost:1313/pipelines/tekton/</link>
-      <pubDate>Mon, 07 Dec 2020 08:06:21 -0800</pubDate>
-      
-      <guid>http://localhost:1313/pipelines/tekton/</guid>
-      <description>Summary Tekton is a Kubernetes Native CI/CD runner. It uses Custom Resource Definitions (CRDs) to store it&amp;rsquo;s configuration and control script running.
-It allows for creating pipelines of tasks that are decoupled from the task definition itself. This allows for a powerful way to break apart the build process into composable bits.
-Experience Note: I&amp;rsquo;ve actually used Tekton a few times before and it&amp;rsquo;s my preferred script runner as I&amp;rsquo;m the most comfortable with it and I have a personal library of tasks.</description>
+      <guid>http://localhost:1313/reviews/pipelines/argo/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Rookout</title>
-      <link>http://localhost:1313/debugging-and-observability/rookout/</link>
+      <link>http://localhost:1313/reviews/debugging-and-observability/rookout/</link>
       <pubDate>Mon, 07 Dec 2020 08:05:43 -0800</pubDate>
       
-      <guid>http://localhost:1313/debugging-and-observability/rookout/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/debugging-and-observability/rookout/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Pixie</title>
-      <link>http://localhost:1313/debugging-and-observability/pixie/</link>
+      <link>http://localhost:1313/reviews/debugging-and-observability/pixie/</link>
       <pubDate>Mon, 07 Dec 2020 08:05:39 -0800</pubDate>
       
-      <guid>http://localhost:1313/debugging-and-observability/pixie/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/debugging-and-observability/pixie/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Telepresence</title>
-      <link>http://localhost:1313/debugging-and-observability/telepresence/</link>
+      <link>http://localhost:1313/reviews/debugging-and-observability/telepresence/</link>
       <pubDate>Mon, 07 Dec 2020 08:05:30 -0800</pubDate>
       
-      <guid>http://localhost:1313/debugging-and-observability/telepresence/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/debugging-and-observability/telepresence/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Opentelemetry</title>
-      <link>http://localhost:1313/debugging-and-observability/opentelemetry/</link>
+      <link>http://localhost:1313/reviews/debugging-and-observability/opentelemetry/</link>
       <pubDate>Mon, 07 Dec 2020 08:05:22 -0800</pubDate>
       
-      <guid>http://localhost:1313/debugging-and-observability/opentelemetry/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/debugging-and-observability/opentelemetry/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Service Catalog</title>
-      <link>http://localhost:1313/misc/svc-cat/</link>
+      <link>http://localhost:1313/reviews/misc/svc-cat/</link>
       <pubDate>Mon, 07 Dec 2020 08:05:22 -0800</pubDate>
       
-      <guid>http://localhost:1313/misc/svc-cat/</guid>
+      <guid>http://localhost:1313/reviews/misc/svc-cat/</guid>
       <description>Nino</description>
     </item>
     
     <item>
       <title>Jupyter Notebooks</title>
-      <link>http://localhost:1313/cloud-based-editors/jupyter-notebooks/</link>
+      <link>http://localhost:1313/reviews/cloud-based-editors/jupyter-notebooks/</link>
       <pubDate>Mon, 07 Dec 2020 08:00:41 -0800</pubDate>
       
-      <guid>http://localhost:1313/cloud-based-editors/jupyter-notebooks/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/cloud-based-editors/jupyter-notebooks/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Gitlab</title>
-      <link>http://localhost:1313/cloud-based-editors/gitlab/</link>
+      <link>http://localhost:1313/reviews/cloud-based-editors/gitlab/</link>
       <pubDate>Mon, 07 Dec 2020 08:00:33 -0800</pubDate>
       
-      <guid>http://localhost:1313/cloud-based-editors/gitlab/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/cloud-based-editors/gitlab/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Code Spaces</title>
-      <link>http://localhost:1313/cloud-based-editors/code-spaces/</link>
+      <link>http://localhost:1313/reviews/cloud-based-editors/code-spaces/</link>
       <pubDate>Mon, 07 Dec 2020 08:00:23 -0800</pubDate>
       
-      <guid>http://localhost:1313/cloud-based-editors/code-spaces/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/cloud-based-editors/code-spaces/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Gitpod</title>
-      <link>http://localhost:1313/cloud-based-editors/gitpod/</link>
+      <link>http://localhost:1313/reviews/cloud-based-editors/gitpod/</link>
       <pubDate>Mon, 07 Dec 2020 08:00:14 -0800</pubDate>
       
-      <guid>http://localhost:1313/cloud-based-editors/gitpod/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/cloud-based-editors/gitpod/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Atheos</title>
-      <link>http://localhost:1313/cloud-based-editors/atheos/</link>
+      <link>http://localhost:1313/reviews/cloud-based-editors/atheos/</link>
       <pubDate>Mon, 07 Dec 2020 08:00:10 -0800</pubDate>
       
-      <guid>http://localhost:1313/cloud-based-editors/atheos/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/cloud-based-editors/atheos/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Code Server</title>
-      <link>http://localhost:1313/cloud-based-editors/code-server/</link>
+      <link>http://localhost:1313/reviews/cloud-based-editors/code-server/</link>
       <pubDate>Mon, 07 Dec 2020 08:00:03 -0800</pubDate>
       
-      <guid>http://localhost:1313/cloud-based-editors/code-server/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/cloud-based-editors/code-server/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Eclipse Che</title>
-      <link>http://localhost:1313/cloud-based-editors/eclipse-che/</link>
+      <link>http://localhost:1313/reviews/cloud-based-editors/eclipse-che/</link>
       <pubDate>Mon, 07 Dec 2020 07:59:48 -0800</pubDate>
       
-      <guid>http://localhost:1313/cloud-based-editors/eclipse-che/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/cloud-based-editors/eclipse-che/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>CloudNative Buildpacks</title>
-      <link>http://localhost:1313/container-builds/cloudnative-buildpacks/</link>
+      <link>http://localhost:1313/reviews/container-builds/cloudnative-buildpacks/</link>
       <pubDate>Fri, 04 Dec 2020 08:49:26 -0800</pubDate>
       
-      <guid>http://localhost:1313/container-builds/cloudnative-buildpacks/</guid>
+      <guid>http://localhost:1313/reviews/container-builds/cloudnative-buildpacks/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kaniko</title>
-      <link>http://localhost:1313/container-builds/kaniko/</link>
+      <link>http://localhost:1313/reviews/container-builds/kaniko/</link>
       <pubDate>Fri, 04 Dec 2020 08:49:11 -0800</pubDate>
       
-      <guid>http://localhost:1313/container-builds/kaniko/</guid>
+      <guid>http://localhost:1313/reviews/container-builds/kaniko/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Podman</title>
-      <link>http://localhost:1313/container-builds/podman/</link>
+      <link>http://localhost:1313/reviews/container-builds/podman/</link>
       <pubDate>Fri, 04 Dec 2020 08:49:04 -0800</pubDate>
       
-      <guid>http://localhost:1313/container-builds/podman/</guid>
+      <guid>http://localhost:1313/reviews/container-builds/podman/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Docker</title>
-      <link>http://localhost:1313/container-builds/docker/</link>
+      <link>http://localhost:1313/reviews/container-builds/docker/</link>
       <pubDate>Fri, 04 Dec 2020 08:48:59 -0800</pubDate>
       
-      <guid>http://localhost:1313/container-builds/docker/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/container-builds/docker/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>DevSpace</title>
-      <link>http://localhost:1313/abstractions/devspace/</link>
+      <link>http://localhost:1313/reviews/abstractions/devspace/</link>
       <pubDate>Fri, 04 Dec 2020 08:48:47 -0800</pubDate>
       
-      <guid>http://localhost:1313/abstractions/devspace/</guid>
+      <guid>http://localhost:1313/reviews/abstractions/devspace/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Helm</title>
-      <link>http://localhost:1313/abstractions/helm/</link>
+      <link>http://localhost:1313/reviews/abstractions/helm/</link>
       <pubDate>Fri, 04 Dec 2020 08:48:47 -0800</pubDate>
       
-      <guid>http://localhost:1313/abstractions/helm/</guid>
+      <guid>http://localhost:1313/reviews/abstractions/helm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Backstage</title>
-      <link>http://localhost:1313/abstractions/backstage/</link>
+      <link>http://localhost:1313/reviews/abstractions/backstage/</link>
       <pubDate>Fri, 04 Dec 2020 08:48:43 -0800</pubDate>
       
-      <guid>http://localhost:1313/abstractions/backstage/</guid>
+      <guid>http://localhost:1313/reviews/abstractions/backstage/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Skaffold</title>
-      <link>http://localhost:1313/abstractions/skaffold/</link>
+      <link>http://localhost:1313/reviews/abstractions/skaffold/</link>
       <pubDate>Fri, 04 Dec 2020 08:48:36 -0800</pubDate>
       
-      <guid>http://localhost:1313/abstractions/skaffold/</guid>
+      <guid>http://localhost:1313/reviews/abstractions/skaffold/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Crossplane</title>
-      <link>http://localhost:1313/platforms/crossplane/</link>
+      <link>http://localhost:1313/reviews/platforms/crossplane/</link>
       <pubDate>Fri, 04 Dec 2020 08:44:59 -0800</pubDate>
       
-      <guid>http://localhost:1313/platforms/crossplane/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/platforms/crossplane/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>KubeVela</title>
-      <link>http://localhost:1313/platforms/kubevela/</link>
+      <link>http://localhost:1313/reviews/platforms/kubevela/</link>
       <pubDate>Fri, 04 Dec 2020 08:44:40 -0800</pubDate>
       
-      <guid>http://localhost:1313/platforms/kubevela/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/platforms/kubevela/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Flynn</title>
-      <link>http://localhost:1313/platforms/flynn/</link>
+      <link>http://localhost:1313/reviews/platforms/flynn/</link>
       <pubDate>Fri, 04 Dec 2020 08:44:10 -0800</pubDate>
       
-      <guid>http://localhost:1313/platforms/flynn/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/platforms/flynn/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Cf4k8s</title>
-      <link>http://localhost:1313/platforms/cf4k8s/</link>
+      <link>http://localhost:1313/reviews/platforms/cf4k8s/</link>
       <pubDate>Fri, 04 Dec 2020 08:44:02 -0800</pubDate>
       
-      <guid>http://localhost:1313/platforms/cf4k8s/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/platforms/cf4k8s/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Tsuru</title>
-      <link>http://localhost:1313/platforms/tsuru/</link>
+      <link>http://localhost:1313/reviews/platforms/tsuru/</link>
       <pubDate>Fri, 04 Dec 2020 08:43:57 -0800</pubDate>
       
-      <guid>http://localhost:1313/platforms/tsuru/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/platforms/tsuru/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>OpenFaaS Cloud</title>
-      <link>http://localhost:1313/platforms/openfaas-cloud/</link>
+      <link>http://localhost:1313/reviews/platforms/openfaas-cloud/</link>
       <pubDate>Fri, 04 Dec 2020 08:43:37 -0800</pubDate>
       
-      <guid>http://localhost:1313/platforms/openfaas-cloud/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/platforms/openfaas-cloud/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>OpenShift Odo</title>
-      <link>http://localhost:1313/platforms/openshift-odo/</link>
+      <link>http://localhost:1313/reviews/platforms/openshift-odo/</link>
       <pubDate>Fri, 04 Dec 2020 08:43:28 -0800</pubDate>
       
-      <guid>http://localhost:1313/platforms/openshift-odo/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/platforms/openshift-odo/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Gitlab AutoDevops</title>
-      <link>http://localhost:1313/platforms/gitlab-autodevops/</link>
+      <link>http://localhost:1313/reviews/platforms/gitlab-autodevops/</link>
       <pubDate>Fri, 04 Dec 2020 08:43:15 -0800</pubDate>
       
-      <guid>http://localhost:1313/platforms/gitlab-autodevops/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/platforms/gitlab-autodevops/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Rio</title>
-      <link>http://localhost:1313/platforms/rio/</link>
+      <link>http://localhost:1313/reviews/platforms/rio/</link>
       <pubDate>Fri, 04 Dec 2020 08:43:04 -0800</pubDate>
       
-      <guid>http://localhost:1313/platforms/rio/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/platforms/rio/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Waypoint</title>
-      <link>http://localhost:1313/platforms/waypoint/</link>
+      <link>http://localhost:1313/reviews/platforms/waypoint/</link>
       <pubDate>Fri, 04 Dec 2020 08:42:58 -0800</pubDate>
       
-      <guid>http://localhost:1313/platforms/waypoint/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/platforms/waypoint/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>Heroku</title>
-      <link>http://localhost:1313/platforms/heroku/</link>
+      <link>http://localhost:1313/reviews/platforms/heroku/</link>
       <pubDate>Fri, 04 Dec 2020 08:42:53 -0800</pubDate>
       
-      <guid>http://localhost:1313/platforms/heroku/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/platforms/heroku/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
       <title>KubeCF</title>
-      <link>http://localhost:1313/platforms/kubecf/</link>
+      <link>http://localhost:1313/reviews/platforms/kubecf/</link>
       <pubDate>Fri, 04 Dec 2020 08:39:38 -0800</pubDate>
       
-      <guid>http://localhost:1313/platforms/kubecf/</guid>
-      <description>Summary Experience Review Pros Cons Conclusion </description>
+      <guid>http://localhost:1313/reviews/platforms/kubecf/</guid>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
   </channel>
