@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/eos-icons/dist/css/eos-icons.css">
+    <link rel="stylesheet" href="/css/eos-style.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+    <title>Cloud Native Developer Tools -- Opentelemetry</title></head>
+  <body><aside class="main-menu js-main-menu">
+    <div class="mm-navigation-container">
+      <header><a class="hide-collapsed" href="https://www.eosdesignsystem.com/"><img src="images/suse-product-brand.svg" alt="SUSE product brand logotype"></a>
+        <div class="mm-navigation-close js-sidebar-toggle"><i class="eos-icons js-sidebar-tooltip js-tooltip" data-placement="bottom" title="">menu</i></div>
+      </header>
+
+      <div class="nav-wrap">
+        <ul class="menu-togglable no-list-style">
+          <li class="menu-item">
+            <div class="menu-element">
+                <span class="main-collapsed-title">Tool Map</span>
+            </div>
+            <a class="menu-title js-select-current-parent js-feature-flag" href="/">
+                <i class="eos-icons">home</i>
+                <span class="menu-title-content">Tool Map</span>
+            </a>
+          </li>
+
+          
+          
+          
+          <hr />
+            <li class="menu-item menu-dropdown">
+                <input class="js-dropdown-toggle" id="abstractions-toggle" type="checkbox" value="checked">
+                <label class="menu-title" for="abstractions-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Abstractions</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+                <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Abstractions</li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/devspace/">DevSpace</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/helm/">Helm</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/backstage/">Backstage</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/skaffold/">Skaffold</a></li>
+                
+                </ul>
+            </li>
+          
+          <hr />
+            <li class="menu-item menu-dropdown">
+                <input class="js-dropdown-toggle" id="cloud-based-editors-toggle" type="checkbox" value="checked">
+                <label class="menu-title" for="cloud-based-editors-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Cloud based editors</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+                <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Cloud based editors</li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/cloud-based-editors/jupyter-notebooks/">Jupyter Notebooks</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/cloud-based-editors/gitlab/">Gitlab</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/cloud-based-editors/code-spaces/">Code Spaces</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/cloud-based-editors/gitpod/">Gitpod</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/cloud-based-editors/atheos/">Atheos</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/cloud-based-editors/code-server/">Code Server</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/cloud-based-editors/eclipse-che/">Eclipse Che</a></li>
+                
+                </ul>
+            </li>
+          
+          <hr />
+            <li class="menu-item menu-dropdown">
+                <input class="js-dropdown-toggle" id="container-builds-toggle" type="checkbox" value="checked">
+                <label class="menu-title" for="container-builds-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Container builds</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+                <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Container builds</li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/container-builds/cloudnative-buildpacks/">CloudNative Buildpacks</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/container-builds/kaniko/">Kaniko</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/container-builds/podman/">Podman</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/container-builds/docker/">Docker</a></li>
+                
+                </ul>
+            </li>
+          
+          <hr />
+            <li class="menu-item menu-dropdown">
+                <input class="js-dropdown-toggle" id="debugging-and-observability-toggle" type="checkbox" value="checked">
+                <label class="menu-title" for="debugging-and-observability-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Debugging and observability</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+                <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Debugging and observability</li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/debugging-and-observability/rookout/">Rookout</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/debugging-and-observability/pixie/">Pixie</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/debugging-and-observability/telepresence/">Telepresence</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/debugging-and-observability/opentelemetry/">Opentelemetry</a></li>
+                
+                </ul>
+            </li>
+          
+          <hr />
+            <li class="menu-item menu-dropdown">
+                <input class="js-dropdown-toggle" id="misc-toggle" type="checkbox" value="checked">
+                <label class="menu-title" for="misc-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Misc</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+                <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Misc</li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/misc/svc-cat/">Service Catalog</a></li>
+                
+                </ul>
+            </li>
+          
+          <hr />
+            <li class="menu-item menu-dropdown">
+                <input class="js-dropdown-toggle" id="pipelines-toggle" type="checkbox" value="checked">
+                <label class="menu-title" for="pipelines-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Pipelines</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+                <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Pipelines</li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/pipelines/tekton/">Tekton</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/pipelines/jenkins-x/">Jenkins X</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/pipelines/drone/">Drone</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/pipelines/argo/">Argo</a></li>
+                
+                </ul>
+            </li>
+          
+          <hr />
+            <li class="menu-item menu-dropdown">
+                <input class="js-dropdown-toggle" id="platforms-toggle" type="checkbox" value="checked">
+                <label class="menu-title" for="platforms-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Platforms</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+                <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Platforms</li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/crossplane/">Crossplane</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/kubevela/">KubeVela</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/flynn/">Flynn</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/cf4k8s/">Cf4k8s</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/tsuru/">Tsuru</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/openfaas-cloud/">OpenFaaS Cloud</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/openshift-odo/">OpenShift Odo</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/gitlab-autodevops/">Gitlab AutoDevops</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/rio/">Rio</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/waypoint/">Waypoint</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/heroku/">Heroku</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/kubecf/">KubeCF</a></li>
+                
+                </ul>
+            </li>
+          
+          
+          
+        </ul>
+      </div>
+    </div>
+    <footer class="footer-side-menu">
+        <ul class="footer-list">
+        <li class="footer-list-item"><a class="footer-link" href="/cookies-policy" data-event-category="Internal link" data-event-action="Cookies policy" data-event-label="Footer">Cookie policy</a></li>
+        <li class="footer-list-item"><a class="footer-link" href="https://eosdesignsystem.com/" data-event-category="External link" data-event-action="Link EOS website" data-event-label="Footer" target="_blank" rel="noreferrer nonopener"><img class="js-tooltip" src="/images/eos-logo.svg" data-toggle="tooltip" data-html="true" title="Visit our website" alt="EOS icon"></a></li>
+        </ul>
+    </footer>
+</aside><div class="mobile-menu js-mobile-menu">
+    <header><a href="/"><img src="images/suse-product-brand.svg" alt="SUSE product brand logotype"></a>
+        <div class="burger-menu js-burger-menu"><a><i class="eos-icons">menu</i></a></div>
+    </header>
+    <nav class="display-nav">
+        <div class="nav-wrap">
+        <ul class="menu-togglable no-list-style">
+            <li class="menu-item">
+          <div class="menu-element"><span class="main-collapsed-title">Tool Map</span></div><a class="menu-title js-select-current-parent js-feature-flag" href="/"><i class="eos-icons">home</i><span class="menu-title-content">Tool Map</span></a>
+          
+          
+          
+          
+          
+  
+          <li class="menu-item menu-dropdown">
+            <input class="js-dropdown-toggle" id="documentation-toggle" type="checkbox">
+            <label class="menu-title" for="documentation-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Abstractions</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+            <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Abstractions</li>
+
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/devspace/">DevSpace</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/helm/">Helm</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/backstage/">Backstage</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/skaffold/">Skaffold</a></li>
+                
+            </ul>
+          </li>
+          
+  
+          <li class="menu-item menu-dropdown">
+            <input class="js-dropdown-toggle" id="documentation-toggle" type="checkbox">
+            <label class="menu-title" for="documentation-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Cloud based editors</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+            <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Cloud based editors</li>
+
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/cloud-based-editors/jupyter-notebooks/">Jupyter Notebooks</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/cloud-based-editors/gitlab/">Gitlab</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/cloud-based-editors/code-spaces/">Code Spaces</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/cloud-based-editors/gitpod/">Gitpod</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/cloud-based-editors/atheos/">Atheos</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/cloud-based-editors/code-server/">Code Server</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/cloud-based-editors/eclipse-che/">Eclipse Che</a></li>
+                
+            </ul>
+          </li>
+          
+  
+          <li class="menu-item menu-dropdown">
+            <input class="js-dropdown-toggle" id="documentation-toggle" type="checkbox">
+            <label class="menu-title" for="documentation-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Container builds</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+            <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Container builds</li>
+
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/container-builds/cloudnative-buildpacks/">CloudNative Buildpacks</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/container-builds/kaniko/">Kaniko</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/container-builds/podman/">Podman</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/container-builds/docker/">Docker</a></li>
+                
+            </ul>
+          </li>
+          
+  
+          <li class="menu-item menu-dropdown">
+            <input class="js-dropdown-toggle" id="documentation-toggle" type="checkbox">
+            <label class="menu-title" for="documentation-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Debugging and observability</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+            <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Debugging and observability</li>
+
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/debugging-and-observability/rookout/">Rookout</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/debugging-and-observability/pixie/">Pixie</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/debugging-and-observability/telepresence/">Telepresence</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/debugging-and-observability/opentelemetry/">Opentelemetry</a></li>
+                
+            </ul>
+          </li>
+          
+  
+          <li class="menu-item menu-dropdown">
+            <input class="js-dropdown-toggle" id="documentation-toggle" type="checkbox">
+            <label class="menu-title" for="documentation-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Misc</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+            <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Misc</li>
+
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/misc/svc-cat/">Service Catalog</a></li>
+                
+            </ul>
+          </li>
+          
+  
+          <li class="menu-item menu-dropdown">
+            <input class="js-dropdown-toggle" id="documentation-toggle" type="checkbox">
+            <label class="menu-title" for="documentation-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Pipelines</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+            <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Pipelines</li>
+
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/pipelines/tekton/">Tekton</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/pipelines/jenkins-x/">Jenkins X</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/pipelines/drone/">Drone</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/pipelines/argo/">Argo</a></li>
+                
+            </ul>
+          </li>
+          
+  
+          <li class="menu-item menu-dropdown">
+            <input class="js-dropdown-toggle" id="documentation-toggle" type="checkbox">
+            <label class="menu-title" for="documentation-toggle"><i class="eos-icons">school</i><span class="menu-title-content">Platforms</span><i class="eos-icons eos-18 float-right menu-expand">keyboard_arrow_down</i></label>
+            <ul class="menu-dropdown-list menu-element">
+                <li class="menu-collapsed-title">Platforms</li>
+
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/crossplane/">Crossplane</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/kubevela/">KubeVela</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/flynn/">Flynn</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/cf4k8s/">Cf4k8s</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/tsuru/">Tsuru</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/openfaas-cloud/">OpenFaaS Cloud</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/openshift-odo/">OpenShift Odo</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/gitlab-autodevops/">Gitlab AutoDevops</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/rio/">Rio</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/waypoint/">Waypoint</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/heroku/">Heroku</a></li>
+                
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/platforms/kubecf/">KubeCF</a></li>
+                
+            </ul>
+          </li>
+          
+          
+          
+        </ul>
+      </div>
+    </nav>
+  </div><section class="content"><div class="submenu js-submenu-section">
+
+</div><div class="container">
+        
+  <h1 class="tool-title">Opentelemetry</h1>
+  <dl class="tool-data pull-right">
+    <dt>Written</dt><dd>Dec 7, 2020</dd>
+    <dt>Homepage</dt><dd><a href="https://opentelemetry.io">https://opentelemetry.io</a></dd>
+    <dt>Github</dt><dd><a href="https://github.com/open-telemetry">https://github.com/open-telemetry</a></dd>
+    <dt>Version Tested</dt><dd></dd>
+    <dt>Sponsors</dt><dd>
+      <ul>
+        
+      </ul>
+    </dd>
+  </dl>
+  <section class="tool-tagline">OpenTelemetry makes robust, portable telemetry a built-in feature of cloud-native software.</section>
+  <section class="tool-review"><h1 id="summary">Summary 
+    <a href="#summary" class="heading-link"><i class="eos-icons">link</i></a>
+</h1>
+<h1 id="experience">Experience 
+    <a href="#experience" class="heading-link"><i class="eos-icons">link</i></a>
+</h1>
+<h1 id="review">Review 
+    <a href="#review" class="heading-link"><i class="eos-icons">link</i></a>
+</h1>
+<h2 id="pros">Pros 
+    <a href="#pros" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<h2 id="cons">Cons 
+    <a href="#cons" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<h1 id="conclusion">Conclusion 
+    <a href="#conclusion" class="heading-link"><i class="eos-icons">link</i></a>
+</h1>
+</section>
+
+        </div>
+    </section>
+    <footer class="footer-content js-footer-content"><ul class="footer-list">
+    <li class="footer-list-item"><a class="footer-link" href="/cookies-policy" data-event-category="Internal link" data-event-action="Cookies policy" data-event-label="Footer">Cookie policy</a></li>
+    <li class="footer-list-item"><a class="footer-link" href="https://eosdesignsystem.com/" data-event-category="External link" data-event-action="Link EOS website" data-event-label="Footer" target="_blank" rel="noreferrer nonopener"><img class="js-tooltip" src="images/eos-logo.svg" data-toggle="tooltip" data-html="true" title="Visit our website" alt="EOS icon"></a></li>
+</ul></footer>
+  </body>
+</html>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="/js/index.js"></script>
+<script src="/js/main.js"></script>

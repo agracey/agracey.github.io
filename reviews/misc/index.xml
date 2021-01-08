@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>misc on Cloud Native Developer Tools</title>
+    <link>http://localhost:1313/reviews/misc/</link>
+    <description>Recent content in misc on Cloud Native Developer Tools</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 04 Dec 2020 08:48:59 -0800</lastBuildDate><atom:link href="http://localhost:1313/reviews/misc/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Service Catalog</title>
+      <link>http://localhost:1313/reviews/misc/svc-cat/</link>
+      <pubDate>Mon, 07 Dec 2020 08:05:22 -0800</pubDate>
+      
+      <guid>http://localhost:1313/reviews/misc/svc-cat/</guid>
+      <description>Nino</description>
+    </item>
+    
+  </channel>
+</rss>

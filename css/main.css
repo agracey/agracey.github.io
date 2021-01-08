@@ -90,10 +90,6 @@
   padding: .75rem
 }
 
-.card-img {
-  /* width: 33%; */
-}
-
 .card >.isDraft {
   width: 100%;
   height: 100%;
