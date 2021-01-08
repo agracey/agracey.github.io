@@ -120,7 +120,8 @@ th {
 .tool-title {
   font-weight: 800;
   font-size: xx-large;
-  padding: 32px;
+  padding-bottom: 32px;
+  padding-top: 32px;
 }
 
 
