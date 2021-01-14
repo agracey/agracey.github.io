@@ -362,7 +362,7 @@
     <div class='card'>
       <div class='card-body'>
 
-        <h5 class='card-title'>Card title</h5>
+        <h5 class='card-title'>Details</h5>
         <h6 class='card-subtitle mb-2'>Written</h6><p class='card-text'>Dec 28, 2020</p>
         <h6 class='card-subtitle mb-2'>Homepage</h6><p class='card-text'><a href="https://tekton.dev">https://tekton.dev</a></p>
         <h6 class='card-subtitle mb-2'>Github</h6><p class='card-text'><a href="https://github.com/tektoncd">https://github.com/tektoncd</a></p>
@@ -385,6 +385,10 @@
 </h1>
 <p>Note: I&rsquo;ve actually used Tekton a few times before and it&rsquo;s my preferred script runner as I&rsquo;m the most comfortable with it and I have a personal library of tasks.</p>
 <p>I&rsquo;ve been using Kubernetes for a while now so I personally liked the tight integration with the platform and working with CRDs (and YAML) was not a new concept. Depending on your background (and how you think about CI/CD), you might count that as a Pro or Con. Also, prior to this review, I had not used the CLI. I typically disagree with each tool offering it&rsquo;s own CLI.</p>
+<h2 id="design">Design 
+    <a href="#design" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<p>Tekton has a &ldquo;nesting doll&rdquo; of ideas that are used to build useful pipelines.</p>
 <h1 id="review">Review 
     <a href="#review" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
@@ -435,7 +439,7 @@
 </code></pre></div><h4 id="dashboard">Dashboard 
     <a href="#dashboard" class="heading-link"><i class="eos-icons">link</i></a>
 </h4>
-<p>The dashboard is similarly easy and can be installed with this set of yaml:</p>
+<p>The dashboard is similarly easy and can be installed with this provided set of yaml:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f https://github.com/tektoncd/dashboard/releases/latest/download/tekton-dashboard-release.yaml
 </code></pre></div><p>To actually access the dahboard, I needed to do a portforward or create an Ingress object:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">networking.k8s.io/v1beta1</span>
@@ -456,10 +460,40 @@
 <h4 id="triggers">Triggers 
     <a href="#triggers" class="heading-link"><i class="eos-icons">link</i></a>
 </h4>
-<h4 id="sample-app">Sample App 
-    <a href="#sample-app" class="heading-link"><i class="eos-icons">link</i></a>
+<p>Lastly, we can setup the triggers so we can use webhooks or other external action to start pipeline runs.</p>
+<p>As with the other components, we can install with it&rsquo;s own yaml file.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
+</code></pre></div><h4 id="command-line-tools">Command Line Tools 
+    <a href="#command-line-tools" class="heading-link"><i class="eos-icons">link</i></a>
 </h4>
-<h2 id="pros">Pros 
+<p>Tekton comes with a useful commandline tool to work with tasks and pipelines.</p>
+<p>Since I&rsquo;m running on OpenSUSE (an RPM based distro), I can install the rpm directly using:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo zypper in https://github.com/tektoncd/cli/releases/download/v0.15.0/tektoncd-cli-0.15.0_Linux-64bit.rpm
+</code></pre></div><p>Oddly enough, the package is called just <code>cli</code> which I think could create confusion later.</p>
+<h4 id="sample">Sample 
+    <a href="#sample" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>To run the hello world task, we can use the provided sample yaml. It looks like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">tekton.dev/v1beta1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Task</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">steps</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello</span>
+      <span style="color:#f92672">image</span>: <span style="color:#ae81ff">ubuntu</span>
+      <span style="color:#f92672">command</span>:
+        - <span style="color:#ae81ff">echo</span>
+      <span style="color:#f92672">args</span>: 
+        - <span style="color:#e6db74">&#34;Hello World&#34;</span>
+</code></pre></div><p>Save this to a file and use <code>kubectl apply -f &lt;file.yaml&gt;</code> to create.</p>
+<p>When that is done, we will see the task in the dashboard as well as with <code>tkn task list</code> and can start the task with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tkn task start hello
+</code></pre></div><p>At the end of the output, you will see a recommended next step to get the output that looks like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tkn taskrun logs hello-run-&lt;id&gt; -f -n default
+</code></pre></div><p>This will print</p>
+<pre><code class="language-log" data-lang="log">[hello] Hello World
+</code></pre><h2 id="pros">Pros 
     <a href="#pros" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
 <ul>
