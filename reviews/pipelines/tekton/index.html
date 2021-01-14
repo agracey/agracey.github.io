@@ -393,7 +393,9 @@
 <p>The steps in a task share a pod meaning that they share a filesystem between each other.</p>
 <p>TaskRuns create a Pod with all the required pieces based on the Task being run then collect the output of the containers in the Pod.</p>
 <p>One step higher, you can create Pipelines that add the ability to multiple Tasks in parallel as well as share a workspace (either in the form of a PersistentVolume or Minio/S3 bucket). This allows for</p>
+<p>Like TaskRuns, you can use PipelineRuns to start and stop the appropriately named Pipeline Runs.</p>
 <p>There is also a growing set of published Tasks for anyone to use available on their <a href="https://github.com/tektoncd/catalog">Github catalog repo</a>.</p>
+<p>Along with these base components, there are also Triggers. These allow you to map external HTTP(s) addresses into PipelineRuns.</p>
 <h1 id="review">Review 
     <a href="#review" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
