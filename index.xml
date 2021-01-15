@@ -87,7 +87,7 @@ Experience link  Note: I&amp;rsquo;ve actually used Tekton a few times before an
       <pubDate>Mon, 07 Dec 2020 08:05:22 -0800</pubDate>
       
       <guid>http://localhost:1313/reviews/misc/svc-cat/</guid>
-      <description>Nino</description>
+      <description></description>
     </item>
     
     <item>
@@ -249,15 +249,6 @@ Experience link  Note: I&amp;rsquo;ve actually used Tekton a few times before an
       <pubDate>Fri, 04 Dec 2020 08:44:10 -0800</pubDate>
       
       <guid>http://localhost:1313/reviews/platforms/flynn/</guid>
-      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
-    </item>
-    
-    <item>
-      <title>Cf4k8s</title>
-      <link>http://localhost:1313/reviews/platforms/cf4k8s/</link>
-      <pubDate>Fri, 04 Dec 2020 08:44:02 -0800</pubDate>
-      
-      <guid>http://localhost:1313/reviews/platforms/cf4k8s/</guid>
       <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     

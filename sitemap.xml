@@ -178,11 +178,6 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/reviews/platforms/cf4k8s/</loc>
-    <lastmod>2020-12-04T08:44:02-08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://localhost:1313/reviews/platforms/tsuru/</loc>
     <lastmod>2020-12-04T08:43:57-08:00</lastmod>
   </url>
