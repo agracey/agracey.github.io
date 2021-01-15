@@ -356,22 +356,44 @@
   <h1 class="tool-title">Tekton</h1>
   <dl class="tool-data pull-right">
     <div class='card'>
+      <img class='card-img' src='/icons/tekton.png' alt='SUSE-logo' />
       <div class='card-body'>
-
-        <h5 class='card-title'>Details</h5>
-        <h6 class='card-subtitle mb-2'>Written</h6><p class='card-text'>Dec 28, 2020</p>
         <h6 class='card-subtitle mb-2'>Homepage</h6><p class='card-text'><a href="https://tekton.dev">https://tekton.dev</a></p>
         <h6 class='card-subtitle mb-2'>Github</h6><p class='card-text'><a href="https://github.com/tektoncd">https://github.com/tektoncd</a></p>
+        <h6 class='card-subtitle mb-2'>Written</h6><p class='card-text'>Dec 28, 2020</p>
         <h6 class='card-subtitle mb-2'>Version Tested</h6><p class='card-text'>v0.19.0</p>
-        <h6 class='card-subtitle mb-2'>Sponsors</h6><p class='card-text'>
-          <ul>
-            
-          </ul>
-        </p>
+        
       </div>
+      <h5 class='card-title'>Contents</h5>
+      <p class='card-text'>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#experience">Experience</a>
+      <ul>
+        <li><a href="#design">Design</a></li>
+      </ul>
+    </li>
+    <li><a href="#review">Review</a>
+      <ul>
+        <li><a href="#why-should-i-care">Why should I care?</a></li>
+        <li><a href="#prior-knowledge-needed">Prior knowledge needed</a></li>
+        <li><a href="#installation">Installation</a>
+          <ul>
+            <li><a href="#what-privileges-are-needed-to-install--use">What privileges are needed to install / use</a></li>
+            <li><a href="#steps">Steps</a></li>
+            <li><a href="#sample">Sample</a></li>
+          </ul>
+        </li>
+        <li><a href="#pros">Pros</a></li>
+        <li><a href="#cons">Cons</a></li>
+        <li><a href="#ideal-projects">Ideal Projects</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+      </p>
     </div>
-
-
   </dl>
   <section class="tool-tagline">Tekton is a powerful and flexible open-source framework for creating CI/CD systems, allowing developers to build, test, and deploy across cloud providers and on-premise systems</section>
   <section class="tool-review"><p>Tekton is a Kubernetes Native CI/CD runner. It uses Custom Resource Definitions (CRDs) to store it&rsquo;s configuration and control script running.</p>
@@ -381,9 +403,11 @@
 </h1>
 <p>Note: I&rsquo;ve actually used Tekton a few times before and it&rsquo;s my preferred script runner as I&rsquo;m the most comfortable with it and I have a personal library of tasks.</p>
 <p>I&rsquo;ve been using Kubernetes for a while now so I personally liked the tight integration with the platform and working with CRDs (and YAML) was not a new concept. Depending on your background (and how you think about CI/CD), you might count that as a Pro or Con. Also, prior to this review, I had not used the CLI. I typically disagree with each tool offering it&rsquo;s own CLI.</p>
+<p>My experience with Tekton has been very positive with only a few expections. One of my main complaints is that there was a architectural change at somepoint in the not to distant past that broke a lot of 3rd party documentation. This is a problem shared by a lot of earlier stage projects and I hope that as it moves forward, the</p>
 <h2 id="design">Design 
     <a href="#design" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
+<p>(TODO: rethink this section?)</p>
 <p>Tekton has a bit of a &ldquo;nesting doll&rdquo; of ideas that are used to build useful pipelines.</p>
 <p>Tasks are the most basic level of control. A Task object allows for you to write which programs should be run, in what containers, and in what order. It also allows for a Task author to specify inputs and outputs (and defaults) that are needed for the Task to run.</p>
 <p>The steps in a task share a pod meaning that they share a filesystem between each other.</p>
@@ -473,9 +497,9 @@
 <p>Since I&rsquo;m running on OpenSUSE (an RPM based distro), I can install the rpm directly using:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo zypper in https://github.com/tektoncd/cli/releases/download/v0.15.0/tektoncd-cli-0.15.0_Linux-64bit.rpm
 </code></pre></div><p>Oddly enough, the package is called just <code>cli</code> which I think could create confusion later.</p>
-<h4 id="sample">Sample 
+<h3 id="sample">Sample 
     <a href="#sample" class="heading-link"><i class="eos-icons">link</i></a>
-</h4>
+</h3>
 <p>To run the hello world task, we can use the provided sample yaml. It looks like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">tekton.dev/v1beta1</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Task</span>
@@ -502,7 +526,7 @@
 <ul>
 <li>Highly composable</li>
 <li>Very powerful with good abstractions</li>
-<li>Good Security due to ability to run stage with K8s Service Accounts least privileges needed</li>
+<li>Good Security due to ability to run stage with K8s Service Accounts least privileges needed (TODO: reword)</li>
 </ul>
 <h2 id="cons">Cons 
     <a href="#cons" class="heading-link"><i class="eos-icons">link</i></a>
@@ -512,10 +536,17 @@
 <li>Needs cluster admin access to install and operator</li>
 <li>Not beginner friendly (Steep learning curve)</li>
 </ul>
+<h2 id="ideal-projects">Ideal Projects 
+    <a href="#ideal-projects" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<p>Tekton is a great solution for projects (and teams) where it makes sense to keep your pipelines seperate from the code being built.</p>
+<p>My prediction is that it will be a great backbone for teams looking to build custom PaaS-like solutions and give a good separation of concerns between departments.</p>
+<p>(TODO: complete)</p>
 <h1 id="conclusion">Conclusion 
     <a href="#conclusion" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
 <p>While Tekton is my personal choice because it gives a set of abstractions that I like to thing with, it&rsquo;s potentially a poor choice for a newer developer or someone just looking to play around  with CI/CD ideas.</p>
+<p>(TODO: complete)</p>
 </section>
 
         </div>
