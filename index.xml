@@ -172,15 +172,6 @@ Experience link  Note: I&amp;rsquo;ve actually used Tekton a few times before an
     </item>
     
     <item>
-      <title>Podman</title>
-      <link>http://localhost:1313/reviews/container-builds/podman/</link>
-      <pubDate>Fri, 04 Dec 2020 08:49:04 -0800</pubDate>
-      
-      <guid>http://localhost:1313/reviews/container-builds/podman/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Docker</title>
       <link>http://localhost:1313/reviews/container-builds/docker/</link>
       <pubDate>Fri, 04 Dec 2020 08:48:59 -0800</pubDate>
