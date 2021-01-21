@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/css/eos-style.css">
     <link rel="stylesheet" href="/css/main.css">
 
-    <title>Cloud Native Developer Tools -- Crossplane</title></head>
+    <title>Cloud Native Developer Tools -- Buildah</title></head>
   <body><aside class="main-menu js-main-menu">
     <div class="mm-navigation-container">
       <header><a class="hide-collapsed" href="https://www.eosdesignsystem.com/"><img src="images/suse-product-brand.svg" alt="SUSE product brand logotype"></a>
@@ -353,27 +353,40 @@
 
 </div><div class="container">
         
-  <h1 class="tool-title">Crossplane</h1>
+  <h1 class="tool-title">Buildah</h1>
   <dl class="tool-data pull-right">
     <div class='card'>
-      <img class='card-img' src='/icons/crossplane.png' alt='SUSE-logo' />
+      <img class='card-img' src='/icons/containers.png' alt='SUSE-logo' />
       <div class='card-body'>
-        <h6 class='card-subtitle mb-2'>Homepage</h6><p class='card-text'><a href="https://crossplane.io/">https://crossplane.io/</a></p>
-        <h6 class='card-subtitle mb-2'>Github</h6><p class='card-text'><a href="https://github.com/crossplane/crossplane">https://github.com/crossplane/crossplane</a></p>
-        <h6 class='card-subtitle mb-2'>Written</h6><p class='card-text'>Dec 4, 2020</p>
-        <h6 class='card-subtitle mb-2'>Version Tested</h6><p class='card-text'></p>
+        <h6 class='card-subtitle mb-2'>Homepage</h6><p class='card-text'><a href="https://buildah.io">https://buildah.io</a></p>
+        <h6 class='card-subtitle mb-2'>Github</h6><p class='card-text'><a href="https://github.com/containers/buildah">https://github.com/containers/buildah</a></p>
+        <h6 class='card-subtitle mb-2'>Written</h6><p class='card-text'>Jan 21, 2021</p>
+        <h6 class='card-subtitle mb-2'>Version Tested</h6><p class='card-text'>v1.17.1</p>
         
       </div>
       <h5 class='card-title'>Contents</h5>
       <p class='card-text'>
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#summary">Summary</a></li>
-    <li><a href="#experience">Experience</a></li>
+    <li><a href="#experience">Experience</a>
+      <ul>
+        <li><a href="#design">Design</a></li>
+      </ul>
+    </li>
     <li><a href="#review">Review</a>
       <ul>
+        <li><a href="#why-should-i-care">Why should I care?</a></li>
+        <li><a href="#prior-knowledge-needed">Prior knowledge needed</a></li>
+        <li><a href="#installation">Installation</a>
+          <ul>
+            <li><a href="#what-privileges-are-needed-to-install--use">What privileges are needed to install / use</a></li>
+            <li><a href="#steps">Steps</a></li>
+            <li><a href="#sample">Sample</a></li>
+          </ul>
+        </li>
         <li><a href="#pros">Pros</a></li>
         <li><a href="#cons">Cons</a></li>
+        <li><a href="#ideal-projects">Ideal Projects</a></li>
       </ul>
     </li>
     <li><a href="#conclusion">Conclusion</a></li>
@@ -382,25 +395,75 @@
       </p>
     </div>
   </dl>
-  <section class="tool-tagline">Manage any infrastructure your applications need directly from Kubernetes</section>
-  <section class="tool-review"><h1 id="summary">Summary 
-    <a href="#summary" class="heading-link"><i class="eos-icons">link</i></a>
-</h1>
+  <section class="tool-tagline">A tool that facilitates building OCI images</section>
+  <section class="tool-review"><p>Buildah is a tool to build containers without needing docker.</p>
 <h1 id="experience">Experience 
     <a href="#experience" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
+<p>Like a few of the other tools here, I&rsquo;ve used Buildah for a few years and use it as my main tool. As usual, I will try to be as unbiased as possible but please let me know if you believe I&rsquo;ve missed (or ignored) anything by accident!</p>
+<h2 id="design">Design 
+    <a href="#design" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<p>(TODO: complete)</p>
 <h1 id="review">Review 
     <a href="#review" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
+<h2 id="why-should-i-care">Why should I care? 
+    <a href="#why-should-i-care" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<p>While Docker was the first to market to make working with containers easy, it made some design choices that might not work for some usecases.</p>
+<h2 id="prior-knowledge-needed">Prior knowledge needed 
+    <a href="#prior-knowledge-needed" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<ul>
+<li>Container Basics</li>
+<li>Shell Scripting</li>
+</ul>
+<h2 id="installation">Installation 
+    <a href="#installation" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<p>(TODO: complete)</p>
+<h3 id="what-privileges-are-needed-to-install--use">What privileges are needed to install / use 
+    <a href="#what-privileges-are-needed-to-install--use" class="heading-link"><i class="eos-icons">link</i></a>
+</h3>
+<ul>
+<li>Root on a Linux host</li>
+</ul>
+<h3 id="steps">Steps 
+    <a href="#steps" class="heading-link"><i class="eos-icons">link</i></a>
+</h3>
+<p>As I&rsquo;m running on an OpenSUSE Leap 15.2 system for my desktop, the installation is done simply with the zypper tool:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo zypper install buildah
+</code></pre></div><p>This will install the tool itself.</p>
+<p>If you want to run rootless (allows building containers without needing to run <code>sudo</code> before each command), you need to edit two files:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo echo <span style="color:#e6db74">`</span>whoami<span style="color:#e6db74">`</span>:10000:100000 &gt;&gt; /etc/subuid
+sudo echo <span style="color:#e6db74">`</span>whoami<span style="color:#e6db74">`</span>:10000:100000 &gt;&gt; /etc/subgid
+</code></pre></div><p>This change also affects the full <a href="https://cri-o.io">CRI-O</a>, <a href="podman.io">Podman</a>, and <a href="https://github.com/containers/skopeo">Skopeo</a> toolchain as well to allow for a fully rootless and more secure way of building and running containers!</p>
+<p>Support for more Operating systems can be found at <a href="https://github.com/containers/buildah/blob/master/install.md">https://github.com/containers/buildah/blob/master/install.md</a></p>
+<h3 id="sample">Sample 
+    <a href="#sample" class="heading-link"><i class="eos-icons">link</i></a>
+</h3>
+<p>(TODO: complete)</p>
 <h2 id="pros">Pros 
     <a href="#pros" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
+<ul>
+<li>(TODO: complete)</li>
+</ul>
 <h2 id="cons">Cons 
     <a href="#cons" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
+<ul>
+<li>(TODO: complete)</li>
+</ul>
+<h2 id="ideal-projects">Ideal Projects 
+    <a href="#ideal-projects" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<p>(TODO: complete)</p>
 <h1 id="conclusion">Conclusion 
     <a href="#conclusion" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
+<p>(TODO: complete)</p>
 </section>
 
         </div>
