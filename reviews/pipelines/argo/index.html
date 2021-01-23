@@ -382,7 +382,31 @@
       </p>
     </div>
   </dl>
-  <section class="tool-tagline">Argo Workflows: Get stuff done with Kubernetes.</section>
+
+
+  <section class="welcome">
+    This is part of a series of developer tool reviews. 
+    In this series I'm looking at many of the popular or interesting tools to help a developer build software in a Cloud Native world. 
+    With this new way of developing software, there can be an explosion of process complexity without using the right tools for the job. 
+  </section>
+  <section class="section-review"><h1 id="why-should-i-care-about-my-cicd">Why should I care about my CI/CD? 
+    <a href="#why-should-i-care-about-my-cicd" class="heading-link"><i class="eos-icons">link</i></a>
+</h1>
+<p>CI/CD stands for Continuous Integration and Continuous Delivery (or Deployment) and forms the basis of the DevOps software development methodology.</p>
+<p>While typically talked about together, each term is a separate idea:</p>
+<ul>
+<li>Continuous Integration is the idea that all of code changes get merged into the main branch of your repository instead of staging changes in an &ldquo;integration branch&rdquo;</li>
+<li>Continuous Delivery builds on this by saying that instead of having releases be on a schedule (weekly for example), the deliverable is released every time it meets some criteria. This likely happens 10-1000 times a day.</li>
+<li>Continuous Deployment is a continuation of these for service providers where the end stage is to actually roll out new versions of the code automatically (and likely roll back on any errors)</li>
+</ul>
+<p>These ideas together give an amazingly agile way of building complex software. Since the change between each version is tiny, any breakages or errors can more easily be traced to their source. It also means the end user of the software can get new value sooner!</p>
+<p>This all comes at a cost though&hellip; It&rsquo;s obviously not possible to manually test, build, and deploy ever single version of the code so we need to automate the process. Due to this, an entire industry has been created around this problem and each solution approaches it in a different way.</p>
+<p>As these processes are central to building your software, it&rsquo;s important to pick a solution that works the way you need it to. I&rsquo;ve selected a few of the most popular (or novel) choices in the industry currently in the hopes of making the selection process less tedious.</p>
+</section>
+
+
+  
+
   <section class="tool-review"><h1 id="summary">Summary 
     <a href="#summary" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>

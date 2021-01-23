@@ -24,9 +24,8 @@ Experience link  Like a few of the other tools here, I&amp;rsquo;ve used Buildah
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/reviews/pipelines/tekton/</guid>
-      <description>Tekton is a Kubernetes Native CI/CD runner. It uses Custom Resource Definitions (CRDs) to store it&amp;rsquo;s configuration and control script running.
-It allows for creating pipelines of tasks that are decoupled from the task definition itself. This allows for a powerful way to break apart the build process into composable bits.
-Experience link  Note: I&amp;rsquo;ve actually used Tekton a few times before and it&amp;rsquo;s my preferred script runner as I&amp;rsquo;m the most comfortable with it and I have a personal library of tasks.</description>
+      <description>Tekton link  For today&amp;rsquo;s review, I&amp;rsquo;m going to look into Tekton. It is a fully Kubernetes Native CI/CD runner.
+One of it&amp;rsquo;s unique selling points is that it separates the process (Pipeline), the scripts being run (Tasks), the code, and the trigger to actually start the process. This decoupling allows for less duplication across projects as well as a similar decoupling in who is responsible for each part of the process.</description>
     </item>
     
     <item>
@@ -188,7 +187,8 @@ Experience link  Note: I&amp;rsquo;ve actually used Tekton a few times before an
       <pubDate>Fri, 04 Dec 2020 08:48:59 -0800</pubDate>
       
       <guid>http://localhost:1313/reviews/container-builds/docker/</guid>
-      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
+      <description>Docker was the first to make creating and managing containers easy enough for mass adoption. The underlying ideas are not new (ad)
+Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>

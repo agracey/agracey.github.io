@@ -368,14 +368,14 @@
       <p class='card-text'>
         <nav id="TableOfContents">
   <ul>
+    <li><a href="#tekton">Tekton</a></li>
     <li><a href="#experience">Experience</a>
       <ul>
-        <li><a href="#design">Design</a></li>
+        <li><a href="#how-it-works">How it Works</a></li>
       </ul>
     </li>
-    <li><a href="#review">Review</a>
+    <li><a href="#usage">Usage</a>
       <ul>
-        <li><a href="#why-should-i-care">Why should I care?</a></li>
         <li><a href="#prior-knowledge-needed">Prior knowledge needed</a></li>
         <li><a href="#installation">Installation</a>
           <ul>
@@ -395,34 +395,56 @@
       </p>
     </div>
   </dl>
-  <section class="tool-tagline">Tekton is a powerful and flexible open-source framework for creating CI/CD systems, allowing developers to build, test, and deploy across cloud providers and on-premise systems</section>
-  <section class="tool-review"><p>Tekton is a Kubernetes Native CI/CD runner. It uses Custom Resource Definitions (CRDs) to store it&rsquo;s configuration and control script running.</p>
-<p>It allows for creating pipelines of tasks that are decoupled from the task definition itself. This allows for a powerful way to break apart the build process into composable bits.</p>
+
+
+  <section class="welcome">
+    This is part of a series of developer tool reviews. 
+    In this series I'm looking at many of the popular or interesting tools to help a developer build software in a Cloud Native world. 
+    With this new way of developing software, there can be an explosion of process complexity without using the right tools for the job. 
+  </section>
+  <section class="section-review"><h1 id="why-should-i-care-about-my-cicd">Why should I care about my CI/CD? 
+    <a href="#why-should-i-care-about-my-cicd" class="heading-link"><i class="eos-icons">link</i></a>
+</h1>
+<p>CI/CD stands for Continuous Integration and Continuous Delivery (or Deployment) and forms the basis of the DevOps software development methodology.</p>
+<p>While typically talked about together, each term is a separate idea:</p>
+<ul>
+<li>Continuous Integration is the idea that all of code changes get merged into the main branch of your repository instead of staging changes in an &ldquo;integration branch&rdquo;</li>
+<li>Continuous Delivery builds on this by saying that instead of having releases be on a schedule (weekly for example), the deliverable is released every time it meets some criteria. This likely happens 10-1000 times a day.</li>
+<li>Continuous Deployment is a continuation of these for service providers where the end stage is to actually roll out new versions of the code automatically (and likely roll back on any errors)</li>
+</ul>
+<p>These ideas together give an amazingly agile way of building complex software. Since the change between each version is tiny, any breakages or errors can more easily be traced to their source. It also means the end user of the software can get new value sooner!</p>
+<p>This all comes at a cost though&hellip; It&rsquo;s obviously not possible to manually test, build, and deploy ever single version of the code so we need to automate the process. Due to this, an entire industry has been created around this problem and each solution approaches it in a different way.</p>
+<p>As these processes are central to building your software, it&rsquo;s important to pick a solution that works the way you need it to. I&rsquo;ve selected a few of the most popular (or novel) choices in the industry currently in the hopes of making the selection process less tedious.</p>
+</section>
+
+
+  
+
+  <section class="tool-review"><h1 id="tekton">Tekton 
+    <a href="#tekton" class="heading-link"><i class="eos-icons">link</i></a>
+</h1>
+<p>For today&rsquo;s review, I&rsquo;m going to look into <a href="https://tekton.dev">Tekton</a>. It is a fully <a href="https://kubernetes.io">Kubernetes</a> Native CI/CD runner.</p>
+<p>One of it&rsquo;s unique selling points is that it separates the process (Pipeline), the scripts being run (Tasks), the code, and the trigger to actually start the process. This decoupling allows for less duplication across projects as well as a similar decoupling in who is responsible for each part of the process.</p>
+<p>This allows for a powerful way to break apart both the build process and the human responsibilities into more flexible pieces.</p>
 <h1 id="experience">Experience 
     <a href="#experience" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
-<p>Note: I&rsquo;ve actually used Tekton a few times before and it&rsquo;s my preferred script runner as I&rsquo;m the most comfortable with it and I have a personal library of tasks.</p>
+<p>Note: I&rsquo;ve used Tekton a few times before and it&rsquo;s my preferred script runner as I&rsquo;m the most comfortable with it and I have a personal library of tasks.</p>
 <p>I&rsquo;ve been using Kubernetes for a while now so I personally liked the tight integration with the platform and working with CRDs (and YAML) was not a new concept. Depending on your background (and how you think about CI/CD), you might count that as a Pro or Con. Also, prior to this review, I had not used the CLI. I typically disagree with each tool offering it&rsquo;s own CLI.</p>
-<p>My experience with Tekton has been very positive with only a few expections. One of my main complaints is that there was a architectural change at somepoint in the not to distant past that broke a lot of 3rd party documentation. This is a problem shared by a lot of earlier stage projects and I hope that as it moves forward, the</p>
-<h2 id="design">Design 
-    <a href="#design" class="heading-link"><i class="eos-icons">link</i></a>
+<p>My experience with Tekton has been very positive with only a few expectations. One of my main complaints is that there was a architectural change at some point in the not to distant past that broke a lot of 3rd party documentation. This is a problem shared by a lot of earlier stage projects and I hope that as it moves forward, the</p>
+<h2 id="how-it-works">How it Works 
+    <a href="#how-it-works" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
-<p>(TODO: rethink this section?)</p>
-<p>Tekton has a bit of a &ldquo;nesting doll&rdquo; of ideas that are used to build useful pipelines.</p>
-<p>Tasks are the most basic level of control. A Task object allows for you to write which programs should be run, in what containers, and in what order. It also allows for a Task author to specify inputs and outputs (and defaults) that are needed for the Task to run.</p>
-<p>The steps in a task share a pod meaning that they share a filesystem between each other.</p>
-<p>TaskRuns create a Pod with all the required pieces based on the Task being run then collect the output of the containers in the Pod.</p>
-<p>One step higher, you can create Pipelines that add the ability to multiple Tasks in parallel as well as share a workspace (either in the form of a PersistentVolume or Minio/S3 bucket). This allows for</p>
-<p>Like TaskRuns, you can use PipelineRuns to start and stop the appropriately named Pipeline Runs.</p>
-<p>There is also a growing set of published Tasks for anyone to use available on their <a href="https://github.com/tektoncd/catalog">Github catalog repo</a>.</p>
-<p>Along with these base components, there are also Triggers. These allow you to map external HTTP(s) addresses into PipelineRuns for use as webhooks (think triggering a PipelineRun when Github reports a PR merge).</p>
-<h1 id="review">Review 
-    <a href="#review" class="heading-link"><i class="eos-icons">link</i></a>
+<p>To achieve the flexibility it needs, Tekton has a bit of a &ldquo;nesting doll&rdquo; of ideas that are used to put together useful pipelines.</p>
+<p>Tasks are the most basic level of control. A Task object allows for you to write which programs should be run, in which container images, and in what order. It also allows for a Task author to specify inputs and outputs (and defaults) that are needed for the Task to run.</p>
+<p>The steps in a task share a pod (meaning that they share a filesystem and resources)</p>
+<p>TaskRuns manage the life cycle of a Task to create a Kubernetes Pod with all the required configuration then collect the output of the Pod.</p>
+<p>One step higher, Pipelines add the ability to run multiple Tasks in parallel as well as share a workspace (either in the form of a PersistentVolume or Minio/S3 bucket). This allows for defining a shared set of Task definitions then composing them into a fully featured process.</p>
+<p>Like TaskRuns, PipelineRuns manage the life cycle of Pipelines.</p>
+<p>Along with these base components, there is also the Trigger component which maps external HTTP(s) addresses into PipelineRuns for use as web-hooks (e.g. triggering a PipelineRun when Github reports a PR merge)</p>
+<h1 id="usage">Usage 
+    <a href="#usage" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
-<h2 id="why-should-i-care">Why should I care? 
-    <a href="#why-should-i-care" class="heading-link"><i class="eos-icons">link</i></a>
-</h2>
-<p>CI/CD systems are increasingly central to the software development process. A good release process should be automated in a safe way to allow for faster development cycles.</p>
 <h2 id="prior-knowledge-needed">Prior knowledge needed 
     <a href="#prior-knowledge-needed" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
@@ -441,7 +463,7 @@
 <h2 id="installation">Installation 
     <a href="#installation" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
-<p>The installation is relatively straightforward if you have access to a kubernetes cluster and includes applying a few chunks of pre-rendered YAML found at: <a href="https://tekton.dev/docs/getting-started/">https://tekton.dev/docs/getting-started/</a></p>
+<p>The installation is relatively straightforward if you have access to a Kubernetes cluster and includes applying a few chunks of pre-rendered YAML found at: <a href="https://tekton.dev/docs/getting-started/">https://tekton.dev/docs/getting-started/</a></p>
 <p>There are also a Tekton Triggers and a Dashboard that can be included to add significant flexibility.</p>
 <h3 id="what-privileges-are-needed-to-install--use">What privileges are needed to install / use 
     <a href="#what-privileges-are-needed-to-install--use" class="heading-link"><i class="eos-icons">link</i></a>
@@ -460,7 +482,7 @@
 </h4>
 <p>The base installation is just applying the provided yaml file.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
-</code></pre></div><p>This will install the CRDs, the roles and rolebindings, and the deployments to operate on the CRDs.</p>
+</code></pre></div><p>This will install the CRDs, the roles and role bindings, and the deployments to operate on the CRDs.</p>
 <p>To install the command line tools, I can use the provided rpm to install with zypper.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo zypper in https://github.com/tektoncd/cli/releases/download/v0.15.0/tektoncd-cli-0.15.0_Linux-64bit.rpm
 </code></pre></div><h4 id="dashboard">Dashboard 
@@ -468,7 +490,7 @@
 </h4>
 <p>The dashboard is similarly easy and can be installed with this provided set of yaml:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply -f https://github.com/tektoncd/dashboard/releases/latest/download/tekton-dashboard-release.yaml
-</code></pre></div><p>To actually access the dahboard, I needed to do a portforward or create an Ingress object:</p>
+</code></pre></div><p>To actually access the dashboard, I needed to do a portforward or create an Ingress object:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">networking.k8s.io/v1beta1</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Ingress</span>
 <span style="color:#f92672">metadata</span>:
@@ -488,7 +510,7 @@
     <a href="#triggers" class="heading-link"><i class="eos-icons">link</i></a>
 </h4>
 <p>Lastly, we can setup the triggers so we can use webhooks or other external action to start pipeline runs.</p>
-<p>As with the other components, we can install with it&rsquo;s own yaml file.</p>
+<p>As with the other components, we can install with its own yaml file.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply --filename https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml
 </code></pre></div><h4 id="command-line-tools">Command Line Tools 
     <a href="#command-line-tools" class="heading-link"><i class="eos-icons">link</i></a>
@@ -527,6 +549,7 @@
 <li>Highly composable</li>
 <li>Very powerful with good abstractions</li>
 <li>Good Security due to ability to run stage with K8s Service Accounts least privileges needed (TODO: reword)</li>
+<li>Growing set of published Tasks for anyone to use available on their <a href="https://github.com/tektoncd/catalog">Github catalog repo</a>.</li>
 </ul>
 <h2 id="cons">Cons 
     <a href="#cons" class="heading-link"><i class="eos-icons">link</i></a>
@@ -539,7 +562,7 @@
 <h2 id="ideal-projects">Ideal Projects 
     <a href="#ideal-projects" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
-<p>Tekton is a great solution for projects (and teams) where it makes sense to keep your pipelines seperate from the code being built.</p>
+<p>Tekton is a great solution for projects (and teams) where it makes sense to keep your pipelines separate from the code being built.</p>
 <p>My prediction is that it will be a great backbone for teams looking to build custom PaaS-like solutions and give a good separation of concerns between departments.</p>
 <p>(TODO: complete)</p>
 <h1 id="conclusion">Conclusion 
