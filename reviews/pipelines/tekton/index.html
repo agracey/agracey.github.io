@@ -353,14 +353,16 @@
 
 </div><div class="container">
         
-  <h1 class="tool-title">Review ofTekton</h1>
-  <dl class="tool-data pull-right">
+  <section class="tool-title">
+    <h1>Review of <span>Tekton</span></h1>
+    <div class="author">Written Dec 28, 2020 by Andrew Gracey -- Developer Advocate at SUSE, focusing on making Cloud Native development less painful</div>
+  </section><dl class="tool-data pull-right">
     <div class='card'>
       <img class='card-img' src='/icons/tekton.png' alt='SUSE-logo' />
       <div class='card-body'>
         <h6 class='card-subtitle mb-2'>Homepage</h6><p class='card-text'><a href="https://tekton.dev">https://tekton.dev</a></p>
         <h6 class='card-subtitle mb-2'>Github</h6><p class='card-text'><a href="https://github.com/tektoncd">https://github.com/tektoncd</a></p>
-        <h6 class='card-subtitle mb-2'>Written</h6><p class='card-text'>Dec 28, 2020</p>
+
         <h6 class='card-subtitle mb-2'>Version Tested</h6><p class='card-text'>v0.19.0</p>
         
       </div>
@@ -394,13 +396,11 @@
 </nav>
       </p>
     </div>
-  </dl>
-
-
-  <section class="welcome">
+  </dl><section class="welcome">
     <p>This is part of a series of <a href="/">cloud native developer tool reviews</a> in which I look at many of the popular or interesting tools for developers building software in a Cloud Native world. </p>
     <p> As many developers have experienced, this new way of developing software can lead to an explosion of process complexity. Using the right tools for the job can help mitigate this significantly. 
       I'm hoping that with these reviews, you can find the toolset that works best for you and the amazing things you are building!</p>
+
   </section>
   <section class="section-review"><h1 id="why-should-i-care-about-cicd">Why should I care about CI/CD? 
     <a href="#why-should-i-care-about-cicd" class="heading-link"><i class="eos-icons">link</i></a>
@@ -549,7 +549,7 @@
 <ul>
 <li>Highly composable</li>
 <li>Very powerful with good abstractions</li>
-<li>Good Security due to ability to run stage with K8s Service Accounts least privileges needed (TODO: reword)</li>
+<li>Solid Security due to ability to use Pipeline specific Service Accounts</li>
 <li>Growing set of published Tasks for anyone to use available on their <a href="https://github.com/tektoncd/catalog">Github catalog repo</a>.</li>
 </ul>
 <h2 id="cons">Cons 
@@ -563,14 +563,13 @@
 <h2 id="ideal-projects">Ideal Projects 
     <a href="#ideal-projects" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
-<p>Tekton is a great solution for projects (and teams) where it makes sense to keep your pipelines separate from the code being built.</p>
-<p>My prediction is that it will be a great backbone for teams looking to build custom PaaS-like solutions and give a good separation of concerns between departments.</p>
-<p>(TODO: complete)</p>
+<p>Tekton is a great solution for projects (and teams) where it makes sense to keep your pipelines separate from the code being built. This can be a useful pattern if you have several components that have the same or similar build processes because you can evolve governance in a more ,centralized way.</p>
+<p>My prediction is that it will be used by a lot of companies' backbone for release teams looking to build custom PaaS-like solutions and give a good separation of concerns between departments.</p>
+<p>While Tekton is my personal choice because it gives a set of abstractions that I like to think with, it&rsquo;s potentially a poor choice for teams with relatively few components or who don&rsquo;t want (or need) to jump on the Kubernetes bandwagon.</p>
 <h1 id="conclusion">Conclusion 
     <a href="#conclusion" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
-<p>While Tekton is my personal choice because it gives a set of abstractions that I like to thing with, it&rsquo;s potentially a poor choice for a newer developer or someone just looking to play around  with CI/CD ideas.</p>
-<p>(TODO: complete)</p>
+<p>Tekton is a fantastic project with a bright future. Teams who are bought in to Kubernetes would likely enjoy using Tekton and find it easy to manage.</p>
 </section>
 
         </div>
