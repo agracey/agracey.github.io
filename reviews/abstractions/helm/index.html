@@ -377,7 +377,31 @@
       </div>
       <h5 class='card-title'>Contents</h5>
       <p class='card-text'>
-        <nav id="TableOfContents"></nav>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#experience">Experience</a>
+      <ul>
+        <li><a href="#design">Design</a></li>
+      </ul>
+    </li>
+    <li><a href="#review">Review</a>
+      <ul>
+        <li><a href="#prior-knowledge-needed">Prior knowledge needed</a></li>
+        <li><a href="#installation">Installation</a>
+          <ul>
+            <li><a href="#what-privileges-are-needed-to-install--use">What privileges are needed to install / use</a></li>
+            <li><a href="#steps">Steps</a></li>
+            <li><a href="#sample">Sample</a></li>
+          </ul>
+        </li>
+        <li><a href="#pros">Pros</a></li>
+        <li><a href="#cons">Cons</a></li>
+        <li><a href="#ideal-projects">Ideal Projects</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
       </p>
     </div>
   </dl><section class="welcome">
@@ -386,12 +410,76 @@
       I'm hoping that with these reviews, you can find the toolset that works best for you and the amazing things you are building!</p>
 
   </section>
-  <section class="section-review"></section>
+  <section class="section-review"><h1 id="why-do-we-need-developer-abstractions-in-kubernetes">Why do we need Developer Abstractions in Kubernetes? 
+    <a href="#why-do-we-need-developer-abstractions-in-kubernetes" class="heading-link"><i class="eos-icons">link</i></a>
+</h1>
+<p>I think it&rsquo;s fair to say that Kubernetes is designed for and by operators with minimal thought about how developers would use it. This means that there is a lot of operational and infrastructure knowledge needed to work with it effectively. I don&rsquo;t believe that developers should be required to also be operators just to build applications!</p>
+<p>Several venders have made abstractions that can help a developer work effectively with Kubernetes without an in-depth background in maintaining infrastructure.</p>
+</section>
 
 
   
 
-  <section class="tool-review"></section>
+  <section class="tool-review"><p>Helm is a tool that allows a developer to bundle components, dependencies, and configuration into &ldquo;Charts&rdquo; to be installed together. A developer can expose a selection of options to make sure configuration matches across all components.</p>
+<p>It also allows for upgrade, roll-back, and uninstall to be done in a clean and easy way.</p>
+<h1 id="experience">Experience 
+    <a href="#experience" class="heading-link"><i class="eos-icons">link</i></a>
+</h1>
+<h2 id="design">Design 
+    <a href="#design" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<p>(TODO: complete)</p>
+<h1 id="review">Review 
+    <a href="#review" class="heading-link"><i class="eos-icons">link</i></a>
+</h1>
+<h2 id="prior-knowledge-needed">Prior knowledge needed 
+    <a href="#prior-knowledge-needed" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<ul>
+<li>Container Basics</li>
+<li>Shell Scripting</li>
+</ul>
+<h2 id="installation">Installation 
+    <a href="#installation" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<p>Buildah is purely a command line tool for Linux and can be installed from both .rpm or .deb packages</p>
+<h3 id="what-privileges-are-needed-to-install--use">What privileges are needed to install / use 
+    <a href="#what-privileges-are-needed-to-install--use" class="heading-link"><i class="eos-icons">link</i></a>
+</h3>
+<p>While Helm 2 used a component called Tiller to manage installs, Helm 3 does it&rsquo;s work client side and uses the Kubernetes RBAC. Due to this, different permissions will be required for different charts.</p>
+<p>For demo purposes, I&rsquo;ll be using my Cluster Admin to do the installs.</p>
+<h3 id="steps">Steps 
+    <a href="#steps" class="heading-link"><i class="eos-icons">link</i></a>
+</h3>
+<p>On openSUSE, we can use zypper to install the Helm command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo zypper in helm
+</code></pre></div><p>The tool itself is a golang binary so it&rsquo;s possible to <a href="https://github.com/helm/helm/releases">install by downloading</a>.</p>
+<h3 id="sample">Sample 
+    <a href="#sample" class="heading-link"><i class="eos-icons">link</i></a>
+</h3>
+<p>As this is a Developer tools blog, let&rsquo;s build a sample chart that runs a</p>
+<p>(TODO: complete)</p>
+<h2 id="pros">Pros 
+    <a href="#pros" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<ul>
+<li></li>
+</ul>
+<h2 id="cons">Cons 
+    <a href="#cons" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<ul>
+<li></li>
+</ul>
+<p>(TODO: complete)</p>
+<h2 id="ideal-projects">Ideal Projects 
+    <a href="#ideal-projects" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<h1 id="conclusion">Conclusion 
+    <a href="#conclusion" class="heading-link"><i class="eos-icons">link</i></a>
+</h1>
+<p>(TODO: complete)</p>
+</section>
 
         </div>
     </section>
