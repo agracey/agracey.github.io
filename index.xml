@@ -15,7 +15,7 @@
       <guid>http://localhost:1313/reviews/container-builds/buildah/</guid>
       <description>Buildah is a tool to build containers without needing the full Docker stack installed, running, and accessible. Due to this it can be run in a much more secure way and with more flexibility.
 It also allows more fine tuning of what goes into container images as well as running without needing root access to the build server.
-Experience link  Like a few of the other tools here, I&amp;rsquo;ve used Buildah for a few years and use it as my main tool.</description>
+Experience link  Like a few of the other tools here, I&amp;rsquo;ve used Buildah for a couple years.</description>
     </item>
     
     <item>
@@ -208,8 +208,7 @@ Summary link  Experience link  Review link  Pros link  Cons link  Conclusion lin
       <guid>http://localhost:1313/reviews/abstractions/helm/</guid>
       <description>Helm is a tool that allows a developer to bundle components, dependencies, and configuration into &amp;ldquo;Charts&amp;rdquo; to be installed together. A developer can expose a selection of options to make sure configuration matches across all components.
 It also allows for upgrade, roll-back, and uninstall to be done in a clean and easy way.
-Experience link  Design link  (TODO: complete)
-Review link  Prior knowledge needed link   Container Basics Shell Scripting  Installation link  Buildah is purely a command line tool for Linux and can be installed from both .</description>
+Experience link  Design link  Helm 3 charts are templated yaml files containing Kubernetes objects. It will populate the template based on user input, add version info to the objects, then create or update the objects based.</description>
     </item>
     
     <item>

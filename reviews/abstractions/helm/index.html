@@ -428,6 +428,9 @@
 <h2 id="design">Design 
     <a href="#design" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
+<p>Helm 3 charts are templated yaml files containing Kubernetes objects. It will populate the template based on user input, add version info to the objects, then create or update the objects based.</p>
+<p>It also keeps a copy of each version in a Custom Resources which allows for you to pull the currently installed config, edit it, and then make an update.</p>
+<p>Each Chart installation is tied to a namespace (and it&rsquo;s RBAC)</p>
 <p>(TODO: complete)</p>
 <h1 id="review">Review 
     <a href="#review" class="heading-link"><i class="eos-icons">link</i></a>
@@ -457,7 +460,10 @@
 <h3 id="sample">Sample 
     <a href="#sample" class="heading-link"><i class="eos-icons">link</i></a>
 </h3>
-<p>As this is a Developer tools blog, let&rsquo;s build a sample chart that runs a</p>
+<p>As this is a Developer tools blog, let&rsquo;s build a sample chart that runs a wordpress instance, mysql, and sets up the routing.</p>
+<p>We start by using</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">helm create sample-wp
+</code></pre></div><p>This will create a new folder with sample yaml at <code>./sample-wp</code></p>
 <p>(TODO: complete)</p>
 <h2 id="pros">Pros 
     <a href="#pros" class="heading-link"><i class="eos-icons">link</i></a>
