@@ -208,7 +208,7 @@ Summary link  Experience link  Review link  Pros link  Cons link  Conclusion lin
       <guid>http://localhost:1313/reviews/abstractions/helm/</guid>
       <description>Helm is a tool that allows a developer to bundle components, dependencies, and configuration into &amp;ldquo;Charts&amp;rdquo; to be installed together. A developer can expose a selection of options to make sure configuration matches across all components.
 It also allows for upgrade, roll-back, and uninstall to be done in a clean and easy way.
-Experience link  Design link  Helm 3 charts are templated yaml files containing Kubernetes objects. It will populate the template based on user input, add version info to the objects, then create or update the objects based.</description>
+Experience link  Helm is likely one of the first tools that people get introduced to after kubectl when they start using Kubernetes.</description>
     </item>
     
     <item>

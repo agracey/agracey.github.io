@@ -523,27 +523,100 @@
 <h3 id="sample">Sample 
     <a href="#sample" class="heading-link"><i class="eos-icons">link</i></a>
 </h3>
-<p>To run the hello world task, we can use the provided sample yaml. It looks like this:</p>
+<p>To show how Tekton uses Yaml to define tasks and pipelines, I built a pretty simple and self-contained example. In it, we wait for a set amount of time then print a string. Both the string and delay are configurable and are split between two tasks.</p>
+<p>To start, create a Task called <code>sleep</code> containing:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">tekton.dev/v1beta1</span>
 <span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Task</span>
 <span style="color:#f92672">metadata</span>:
-  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello</span>
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">sleep</span>
 <span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">params</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">time-to-sleep</span>
+      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">string</span>
+      <span style="color:#f92672">default</span>: <span style="color:#e6db74">&#34;30&#34;</span>
+      <span style="color:#f92672">description</span>: <span style="color:#ae81ff">How long to wait</span>
   <span style="color:#f92672">steps</span>:
-    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello</span>
-      <span style="color:#f92672">image</span>: <span style="color:#ae81ff">ubuntu</span>
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">sleep</span>
+      <span style="color:#f92672">image</span>: <span style="color:#ae81ff">registry.opensuse.org/opensuse/leap:15.2</span>
+      <span style="color:#f92672">command</span>:
+        - <span style="color:#ae81ff">sleep</span>
+      <span style="color:#f92672">args</span>: 
+        - <span style="color:#ae81ff">$(params.time-to-sleep)</span>
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">print-done</span>
+      <span style="color:#f92672">image</span>: <span style="color:#ae81ff">registry.opensuse.org/opensuse/leap:15.2</span>
       <span style="color:#f92672">command</span>:
         - <span style="color:#ae81ff">echo</span>
       <span style="color:#f92672">args</span>: 
-        - <span style="color:#e6db74">&#34;Hello World&#34;</span>
-</code></pre></div><p>Save this to a file and use <code>kubectl apply -f &lt;file.yaml&gt;</code> to create.</p>
-<p>When that is done, we will see the task in the dashboard as well as with <code>tkn task list</code> and can start the task with:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tkn task start hello
-</code></pre></div><p>At the end of the output, you will see a recommended next step to get the output that looks like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tkn taskrun logs hello-run-&lt;id&gt; -f -n default
-</code></pre></div><p>This will print</p>
-<pre><code class="language-log" data-lang="log">[hello] Hello World
-</code></pre><h2 id="pros">Pros 
+        - <span style="color:#e6db74">&#34;Done Sleeping!&#34;</span>
+</code></pre></div><p>It will sleep for the time requested (through the params object) then prints &ldquo;Done Sleeping!&rdquo; to the logs.</p>
+<p>Next create a Task called <code>print</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">tekton.dev/v1beta1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Task</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">print-text</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">params</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">text-to-echo</span>
+      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">string</span>
+      <span style="color:#f92672">default</span>: <span style="color:#e6db74">&#34;This is very contrived&#34;</span>
+      <span style="color:#f92672">description</span>: <span style="color:#ae81ff">Text To Echo Out</span>
+  <span style="color:#f92672">steps</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">hello</span>
+      <span style="color:#f92672">image</span>: <span style="color:#ae81ff">registry.opensuse.org/opensuse/leap:15.2</span>
+      <span style="color:#f92672">command</span>:
+        - <span style="color:#ae81ff">echo</span>
+      <span style="color:#f92672">args</span>: 
+        - <span style="color:#ae81ff">$(params.text-to-echo)</span>
+</code></pre></div><p>Similarly, this prints the requested Text!</p>
+<p>These can be run independently with <code>tkn task start sleep</code> or <code>tkn task start print</code> but that misses out on much of the flexibility of Pipelines.</p>
+<p>To combine these Tasks create a Pipeline with both of them specified:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">tekton.dev/v1beta1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Pipeline</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mock-pipeline</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">params</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">time-to-sleep</span>
+      <span style="color:#f92672">type</span>: <span style="color:#ae81ff">string</span>
+      <span style="color:#f92672">default</span>: <span style="color:#e6db74">&#34;30&#34;</span>
+      <span style="color:#f92672">description</span>: <span style="color:#ae81ff">How long to wait</span>
+  <span style="color:#f92672">tasks</span>:
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">pull-code</span>
+      <span style="color:#f92672">taskRef</span>:
+        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">print-text</span>
+      <span style="color:#f92672">params</span>:
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">text-to-echo</span>
+          <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#34;Maybe pulling some code from git?&#34;</span>
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">build</span>
+      <span style="color:#f92672">runAfter</span>: 
+      - <span style="color:#ae81ff">pull-code</span>
+      <span style="color:#f92672">taskRef</span>:
+        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">sleep</span>
+      <span style="color:#f92672">params</span>:
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">time-to-sleep</span>
+          <span style="color:#f92672">value</span>: <span style="color:#ae81ff">$(params.time-to-sleep)</span>
+    - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">print2</span>
+      <span style="color:#f92672">runAfter</span>: 
+      - <span style="color:#ae81ff">build</span>
+      <span style="color:#f92672">taskRef</span>:
+        <span style="color:#f92672">name</span>: <span style="color:#ae81ff">print-text</span>
+      <span style="color:#f92672">params</span>:
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">text-to-echo</span>
+          <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#34;This could be a deploy?&#34;</span>
+</code></pre></div><p>This Pipeline runs the <code>print-text</code> task to print &ldquo;Maybe pulling some code from git?&rdquo;, then sleeps for a request amount of time, then runs <code>print-text</code> again to print &ldquo;This could be a deploy?&rdquo;</p>
+<p>To run this pipeline, use:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tkn pipeline start mock-pipeline
+</code></pre></div><p>It will prompt for how long to wait then print a command to use for viewing logs that looks similar to:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tkn pipelinerun logs mock-pipeline-run-zv6vs -f -n default
+</code></pre></div><p>If you run this you will see all (or part if it&rsquo;s still sleeping) of this output:</p>
+<pre><code class="language-log" data-lang="log">[pull-code : hello] Maybe pulling some code from git?
+
+
+[build : print-done] Done Sleeping!
+
+[print2 : hello] This could be a deploy
+</code></pre><p>There are a lot of pre-built tasks in <a href="https://github.com/tektoncd/catalog/tree/master/task">the provided Catalogue</a></p>
+<h2 id="pros">Pros 
     <a href="#pros" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
 <ul>
@@ -569,7 +642,8 @@
 <h1 id="conclusion">Conclusion 
     <a href="#conclusion" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
-<p>Tekton is a fantastic project with a bright future. Teams who are bought in to Kubernetes would likely enjoy using Tekton and find it easy to manage.</p>
+<p>Tekton is a fantastic project with a lot of cool ideas on minimalism. Teams who are already bought in to Kubernetes would likely enjoy using Tekton and find it easy to manage.</p>
+<p>I&rsquo;m very excited to see where this project goes in the future!</p>
 </section>
 
         </div>

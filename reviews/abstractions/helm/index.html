@@ -425,12 +425,13 @@
 <h1 id="experience">Experience 
     <a href="#experience" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
+<p>Helm is likely one of the first tools that people get introduced to after <code>kubectl</code> when they start using Kubernetes. As such, I have used it for several years now.</p>
 <h2 id="design">Design 
     <a href="#design" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
-<p>Helm 3 charts are templated yaml files containing Kubernetes objects. It will populate the template based on user input, add version info to the objects, then create or update the objects based.</p>
-<p>It also keeps a copy of each version in a Custom Resources which allows for you to pull the currently installed config, edit it, and then make an update.</p>
-<p>Each Chart installation is tied to a namespace (and it&rsquo;s RBAC)</p>
+<p>Helm 3 charts are templated yaml files that produce various Kubernetes objects. When a chart is deployed, it will populate the template based on user input, add helm-specific version info to the objects, then create or update the generated objects.</p>
+<p>It also keeps a copy of each version in a Custom Resource which allows for you to pull the currently installed config, edit it, and then make an update. From experience, this really helps when you have multiple people who might have made configuration changes.</p>
+<p>Each Chart installation is tied to a namespace and is limited to the Roles bound to the current user.</p>
 <p>(TODO: complete)</p>
 <h1 id="review">Review 
     <a href="#review" class="heading-link"><i class="eos-icons">link</i></a>
@@ -469,21 +470,27 @@
     <a href="#pros" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
 <ul>
+<li>Industry standard</li>
+<li>Good security model</li>
 <li></li>
 </ul>
 <h2 id="cons">Cons 
     <a href="#cons" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
 <ul>
-<li></li>
+<li>Charts can become very complex</li>
+<li>Installation, Upgrades and Rollbacks are only single step (as opposed to the Operator Model which allows for a more scripted approach)</li>
 </ul>
 <p>(TODO: complete)</p>
 <h2 id="ideal-projects">Ideal Projects 
     <a href="#ideal-projects" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
+<p>Any project that has a lot of potential misconfigurations would likely benefit from helm&rsquo;s ability to give sane but editable defaults.</p>
+<p>It&rsquo;s likely not worth creating a helm chart just for a Wordpress site, but it&rsquo;s very useful for anyone producing reusable components (platforms, databases, authentication, etc) who wants to simplify the process of installing their software.</p>
 <h1 id="conclusion">Conclusion 
     <a href="#conclusion" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
+<p>Helm</p>
 <p>(TODO: complete)</p>
 </section>
 
