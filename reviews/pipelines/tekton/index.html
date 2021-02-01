@@ -609,13 +609,14 @@
 </code></pre></div><p>It will prompt for how long to wait then print a command to use for viewing logs that looks similar to:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tkn pipelinerun logs mock-pipeline-run-zv6vs -f -n default
 </code></pre></div><p>If you run this you will see all (or part if it&rsquo;s still sleeping) of this output:</p>
-<pre><code class="language-log" data-lang="log">[pull-code : hello] Maybe pulling some code from git?
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>pull-code : hello<span style="color:#f92672">]</span> Maybe pulling some code from git?
 
 
-[build : print-done] Done Sleeping!
+<span style="color:#f92672">[</span>build : print-done<span style="color:#f92672">]</span> Done Sleeping!
 
-[print2 : hello] This could be a deploy
-</code></pre><p>While these tasks are overly simple, there are a lot of pre-built tasks in <a href="https://github.com/tektoncd/catalog/tree/master/task">the provided catalog</a> that can be used to easily create powerful pipelines. And since they are all yaml, it&rsquo;s simple to modify them as needed!</p>
+<span style="color:#f92672">[</span>print2 : hello<span style="color:#f92672">]</span> This could be a deploy
+</code></pre></div><p>While these tasks are overly simple, there are a lot of pre-built tasks in <a href="https://github.com/tektoncd/catalog/tree/master/task">the provided catalog</a> that can be used to easily create powerful pipelines. And since they are all yaml, it&rsquo;s simple to modify them as needed!</p>
+<p>In future blogs, I&rsquo;ll go through using either Kaniko or Cloud Native Buildpacks to build images. Tekton has good support for both of these methods.</p>
 <h2 id="pros">Pros 
     <a href="#pros" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>

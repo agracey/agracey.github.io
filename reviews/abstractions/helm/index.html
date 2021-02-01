@@ -446,18 +446,17 @@
 <h2 id="installation">Installation 
     <a href="#installation" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
-<p>Buildah is purely a command line tool for Linux and can be installed from both .rpm or .deb packages</p>
 <h3 id="what-privileges-are-needed-to-install--use">What privileges are needed to install / use 
     <a href="#what-privileges-are-needed-to-install--use" class="heading-link"><i class="eos-icons">link</i></a>
 </h3>
-<p>While Helm 2 used a component called Tiller to manage installs, Helm 3 does it&rsquo;s work client side and uses the Kubernetes RBAC. Due to this, different permissions will be required for different charts.</p>
+<p>While the older Helm versions of Helm used a component called Tiller to manage installs, Helm 3 does it&rsquo;s work client side and uses the Kubernetes access controls. Due to this, different permissions will be required based on what the chart itself needs.</p>
 <p>For demo purposes, I&rsquo;ll be using my Cluster Admin to do the installs.</p>
 <h3 id="steps">Steps 
     <a href="#steps" class="heading-link"><i class="eos-icons">link</i></a>
 </h3>
 <p>On openSUSE, we can use zypper to install the Helm command:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo zypper in helm
-</code></pre></div><p>The tool itself is a golang binary so it&rsquo;s possible to <a href="https://github.com/helm/helm/releases">install by downloading</a>.</p>
+</code></pre></div><p>The tool itself is a golang binary so it&rsquo;s also possible to <a href="https://github.com/helm/helm/releases">install by downloading</a>.</p>
 <h3 id="sample">Sample 
     <a href="#sample" class="heading-link"><i class="eos-icons">link</i></a>
 </h3>
