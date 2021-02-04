@@ -390,7 +390,7 @@
         <li><a href="#installation">Installation</a>
           <ul>
             <li><a href="#what-privileges-are-needed-to-install--use">What privileges are needed to install / use</a></li>
-            <li><a href="#steps">Steps</a></li>
+            <li><a href="#installation-steps">Installation Steps</a></li>
             <li><a href="#sample">Sample</a></li>
           </ul>
         </li>
@@ -451,8 +451,8 @@
 </h3>
 <p>While the older Helm versions of Helm used a component called Tiller to manage installs, Helm 3 does it&rsquo;s work client side and uses the Kubernetes access controls. Due to this, different permissions will be required based on what the chart itself needs.</p>
 <p>For demo purposes, I&rsquo;ll be using my Cluster Admin to do the installs.</p>
-<h3 id="steps">Steps 
-    <a href="#steps" class="heading-link"><i class="eos-icons">link</i></a>
+<h3 id="installation-steps">Installation Steps 
+    <a href="#installation-steps" class="heading-link"><i class="eos-icons">link</i></a>
 </h3>
 <p>On openSUSE, we can use zypper to install the Helm command:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo zypper in helm
@@ -460,11 +460,227 @@
 <h3 id="sample">Sample 
     <a href="#sample" class="heading-link"><i class="eos-icons">link</i></a>
 </h3>
-<p>As this is a Developer tools blog, let&rsquo;s build a sample chart that runs a wordpress instance, mysql, and sets up the routing.</p>
-<p>We start by using</p>
+<p>As this is a Developer tools blog, let&rsquo;s build a sample chart that runs a default wordpress instance and mysql then sets up the environment variables and routing.</p>
+<p>NOTE: I&rsquo;m using the wordpress (and it&rsquo;s documentation) found in <a href="https://hub.docker.com/_/wordpress/">Docker Hub</a> to know what configuration is available.</p>
+<p>We start by creating some tempaltes to start with using:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">helm create sample-wp
-</code></pre></div><p>This will create a new folder with sample yaml at <code>./sample-wp</code></p>
-<p>(TODO: complete)</p>
+</code></pre></div><p>This will create a new folder with sample yaml at <code>./sample-wp</code>.</p>
+<p>In this folder, there are two yaml files and two folders (and a hidden file <code>.helmignore</code>):</p>
+<ul>
+<li>Chart.yaml</li>
+</ul>
+<p>This controls some basic metadata about the chart being created.</p>
+<ul>
+<li>values.yaml</li>
+</ul>
+<p>This sets the default values used for templating. It can also be used for providing documentation for users! The contents of this file are displayed when a user runs <code>helm inspect values &lt;your chart name&gt;</code>. Please document your values, it makes everyone&rsquo;s life easier</p>
+<ul>
+<li>charts/</li>
+</ul>
+<p>This folder provides a way to build <a href="https://helm.sh/docs/chart_template_guide/subcharts_and_globals/">subcharts</a> when your main chart gets too complicated.</p>
+<ul>
+<li>templates/</li>
+</ul>
+<p>This is where the magic happens. By default templates for a deployment, a service, some autoscaling magic, an ingress, a service account all get created, and a way to do automated testing all get created.</p>
+<p>To start with, I&rsquo;m going to delete each of these template defaults and start from scratch.</p>
+<p>Note: I&rsquo;m not really a Wordpress developer or user so it&rsquo;s unlikely I&rsquo;ll create the best set up.</p>
+<h4 id="database-and-its-service">Database and it&rsquo;s Service 
+    <a href="#database-and-its-service" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>The first thing to do is create a mysql database instance. With this, we need a deployment and a service to let wordpress talk to it.</p>
+<p>Note: Some of the needed values are Helm magic. I&rsquo;m simplifying some of the indirection ()</p>
+<p>Let&rsquo;s create a new file called <code>templates/mysql-deploy.yaml</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: {{<span style="color:#ae81ff">.Chart.Name}}-database</span>
+  <span style="color:#f92672">labels</span>:
+    <span style="color:#f92672">helm.sh/chart</span>: {{<span style="color:#ae81ff">.Chart.Name}}-{{.Chart.Version}}</span>
+    <span style="color:#f92672">app.kubernetes.io/managed-by</span>: {{ <span style="color:#ae81ff">.Release.Service }}</span>
+    <span style="color:#f92672">app.kubernetes.io/version</span>: {{ <span style="color:#ae81ff">.Chart.AppVersion | quote }}</span>
+    <span style="color:#f92672">app.kubernetes.io/name</span>: {{<span style="color:#ae81ff">.Chart.Name}}-wp</span>
+    <span style="color:#f92672">app.kubernetes.io/instance</span>: {{ <span style="color:#ae81ff">.Release.Name }}</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
+  <span style="color:#f92672">selector</span>:
+    <span style="color:#f92672">matchLabels</span>:
+      <span style="color:#f92672">app.kubernetes.io/name</span>: {{<span style="color:#ae81ff">.Chart.Name}}-database</span>
+      <span style="color:#f92672">app.kubernetes.io/instance</span>: {{ <span style="color:#ae81ff">.Release.Name }}</span>
+  <span style="color:#f92672">template</span>:
+    <span style="color:#f92672">metadata</span>:
+      <span style="color:#f92672">labels</span>:
+        <span style="color:#f92672">app.kubernetes.io/name</span>: {{<span style="color:#ae81ff">.Chart.Name}}-database</span>
+        <span style="color:#f92672">app.kubernetes.io/instance</span>: {{ <span style="color:#ae81ff">.Release.Name }}</span>
+    <span style="color:#f92672">spec</span>:
+      <span style="color:#f92672">containers</span>:
+      - <span style="color:#f92672">name</span>: {{ <span style="color:#ae81ff">.Chart.Name }}-database</span>
+        <span style="color:#f92672">image</span>: <span style="color:#e6db74">&#34;{{ .Values.databaseImage.repository }}:{{ .Values.databaseImage.tag }}&#34;</span>
+        <span style="color:#f92672">imagePullPolicy</span>: {{ <span style="color:#ae81ff">.Values.databaseImage.pullPolicy }}</span>
+        <span style="color:#f92672">env</span>:
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">MYSQL_RANDOM_ROOT_PASSWORD</span>
+          <span style="color:#f92672">value</span>: <span style="color:#e6db74">&#34;1&#34;</span>
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">MYSQL_USER</span>
+          <span style="color:#f92672">value</span>: {{<span style="color:#ae81ff">.Values.mysql.user}}</span>
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">MYSQL_PASSWORD</span>
+          <span style="color:#f92672">value</span>: {{<span style="color:#ae81ff">.Values.mysql.password}}</span>
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">MYSQL_DATABASE</span>
+          <span style="color:#f92672">value</span>: {{<span style="color:#ae81ff">.Values.mysql.schema_name}}</span>
+        <span style="color:#f92672">ports</span>:
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql</span>
+          <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">3306</span>
+          <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+        <span style="color:#f92672">volumeMounts</span>:
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql-storage</span>
+          <span style="color:#f92672">mountPath</span>: <span style="color:#ae81ff">/var/lib/mysql</span>
+      <span style="color:#f92672">volumes</span>:
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql-storage</span>
+        <span style="color:#f92672">emptyDir</span>: {}
+</code></pre></div><p>This will set up a mysql deployment with all the needed environment variables. It also sets up the right labels to allow for easy updating and rollback with helm. Typically this is abstracted with some code in <code>_helpers.tml</code>.</p>
+<p>For simplicity&rsquo;s sake, I&rsquo;m using an EmptyDir volume instead of a PersistentVolume. Due to this, all data will be lost when the database pod restarts.</p>
+<p>Next, we will add a service to allow other pods to access the database with a file called <code>templates/mysql-service.yaml</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: {{ <span style="color:#ae81ff">.Release.Name }}-database</span>
+  <span style="color:#f92672">labels</span>:
+    <span style="color:#f92672">helm.sh/chart</span>: {{<span style="color:#ae81ff">.Chart.Name}}-{{.Chart.Version}}</span>
+    <span style="color:#f92672">app.kubernetes.io/managed-by</span>: {{ <span style="color:#ae81ff">.Release.Service }}</span>
+    <span style="color:#f92672">app.kubernetes.io/version</span>: {{ <span style="color:#ae81ff">.Chart.AppVersion | quote }}</span>
+    <span style="color:#f92672">app.kubernetes.io/name</span>: {{<span style="color:#ae81ff">.Chart.Name}}-database</span>
+    <span style="color:#f92672">app.kubernetes.io/instance</span>: {{ <span style="color:#ae81ff">.Release.Name }}</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">ClusterIP</span>
+  <span style="color:#f92672">ports</span>:
+  - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">3306</span>
+    <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">mysql</span>
+    <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mysql</span>
+  <span style="color:#f92672">selector</span>:
+    <span style="color:#f92672">app.kubernetes.io/name</span>: {{<span style="color:#ae81ff">.Chart.Name}}-database</span>
+    <span style="color:#f92672">app.kubernetes.io/instance</span>: {{ <span style="color:#ae81ff">.Release.Name }}</span>
+</code></pre></div><p>This will target the same pods that are created in the deployment template.</p>
+<p>There are several template values defined above that need to have sane defaults applied. We can do that by changing the <code>values.yaml</code> to be (along with some that we can guess will be needed in the next section):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#75715e"># Image to use for WordPress</span>
+<span style="color:#f92672">wpImage</span>:
+  <span style="color:#f92672">repository</span>: <span style="color:#ae81ff">wordpress</span>
+  <span style="color:#f92672">pullPolicy</span>: <span style="color:#ae81ff">IfNotPresent</span>
+  <span style="color:#f92672">tag</span>: <span style="color:#ae81ff">5.6.0</span>
+<span style="color:#75715e"># Image to use for MySQL</span>
+<span style="color:#f92672">databaseImage</span>:
+  <span style="color:#f92672">repository</span>: <span style="color:#ae81ff">mysql</span>
+  <span style="color:#f92672">pullPolicy</span>: <span style="color:#ae81ff">IfNotPresent</span>
+  <span style="color:#f92672">tag</span>: <span style="color:#ae81ff">latest</span>
+<span style="color:#f92672">mysql</span>:
+  <span style="color:#f92672">user</span>: <span style="color:#ae81ff">wp_user</span>
+  <span style="color:#f92672">password</span>: <span style="color:#ae81ff">SomeRandomPassword</span>
+  <span style="color:#f92672">schema_name</span>: <span style="color:#ae81ff">wp_db</span>
+
+<span style="color:#f92672">ingress</span>:
+  <span style="color:#f92672">hostname</span>: <span style="color:#ae81ff">127.0.0.1</span><span style="color:#ae81ff">.omg.howdoi.website</span>
+</code></pre></div><h4 id="wordpress">Wordpress 
+    <a href="#wordpress" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>Similar to MySQL, I created a file called <code>wp-deploy.yaml</code> to container the deployment manifest:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: {{ <span style="color:#ae81ff">.Release.Name }}-wp</span>
+  <span style="color:#f92672">labels</span>:
+    <span style="color:#f92672">helm.sh/chart</span>: {{<span style="color:#ae81ff">.Chart.Name}}-{{.Chart.Version}}</span>
+    <span style="color:#f92672">app.kubernetes.io/managed-by</span>: {{ <span style="color:#ae81ff">.Release.Service }}</span>
+    <span style="color:#f92672">app.kubernetes.io/version</span>: {{ <span style="color:#ae81ff">.Chart.AppVersion | quote }}</span>
+    <span style="color:#f92672">app.kubernetes.io/name</span>: {{<span style="color:#ae81ff">.Chart.Name}}-wp</span>
+    <span style="color:#f92672">app.kubernetes.io/instance</span>: {{ <span style="color:#ae81ff">.Release.Name }}</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
+  <span style="color:#f92672">selector</span>:
+    <span style="color:#f92672">matchLabels</span>:
+      <span style="color:#f92672">app.kubernetes.io/name</span>: {{<span style="color:#ae81ff">.Chart.Name}}-wp</span>
+      <span style="color:#f92672">app.kubernetes.io/instance</span>: {{ <span style="color:#ae81ff">.Release.Name }}</span>
+  <span style="color:#f92672">template</span>:
+    <span style="color:#f92672">metadata</span>:
+      <span style="color:#f92672">labels</span>:
+        <span style="color:#f92672">app.kubernetes.io/name</span>: {{<span style="color:#ae81ff">.Chart.Name}}-wp</span>
+        <span style="color:#f92672">app.kubernetes.io/instance</span>: {{ <span style="color:#ae81ff">.Release.Name }}</span>
+    <span style="color:#f92672">spec</span>:
+      <span style="color:#f92672">containers</span>:
+      - <span style="color:#f92672">name</span>: {{ <span style="color:#ae81ff">.Chart.Name }}-wp</span>
+        <span style="color:#f92672">image</span>: <span style="color:#e6db74">&#34;{{ .Values.wpImage.repository }}:{{ .Values.wpImage.tag }}&#34;</span>
+        <span style="color:#f92672">imagePullPolicy</span>: {{ <span style="color:#ae81ff">.Values.wpImage.pullPolicy }}</span>
+        <span style="color:#f92672">ports</span>:
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">http</span>
+          <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">80</span>
+          <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+        <span style="color:#f92672">env</span>:
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">WORDPRESS_DB_HOST</span>
+          <span style="color:#f92672">value</span>: {{ <span style="color:#ae81ff">.Release.Name }}-database.{{.Release.Namespace}}:3306</span>
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">WORDPRESS_DB_USER</span>
+          <span style="color:#f92672">value</span>: {{<span style="color:#ae81ff">.Values.mysql.user}}</span>
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">WORDPRESS_DB_PASSWORD</span>
+          <span style="color:#f92672">value</span>: {{<span style="color:#ae81ff">.Values.mysql.password}}</span>
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">WORDPRESS_DB_NAME</span>
+          <span style="color:#f92672">value</span>: {{<span style="color:#ae81ff">.Values.mysql.schema_name}}</span>
+</code></pre></div><p>As you can see we were able to reuse all the information we know about the database here to eliminate potential mis-configurations. (Imagine that your application was more than just a database and single server!)</p>
+<p>For the Service, we will do the same with <code>wp-service.yaml</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">v1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Service</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: {{ <span style="color:#ae81ff">.Release.Name }}-wp</span>
+  <span style="color:#f92672">labels</span>:
+    <span style="color:#f92672">helm.sh/chart</span>: {{<span style="color:#ae81ff">.Chart.Name}}-{{.Chart.Version}}</span>
+    <span style="color:#f92672">app.kubernetes.io/managed-by</span>: {{ <span style="color:#ae81ff">.Release.Service }}</span>
+    <span style="color:#f92672">app.kubernetes.io/version</span>: {{ <span style="color:#ae81ff">.Chart.AppVersion | quote }}</span>
+    <span style="color:#f92672">app.kubernetes.io/name</span>: {{<span style="color:#ae81ff">.Chart.Name}}-wp</span>
+    <span style="color:#f92672">app.kubernetes.io/instance</span>: {{ <span style="color:#ae81ff">.Release.Name }}</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">type</span>: <span style="color:#ae81ff">ClusterIP</span>
+  <span style="color:#f92672">ports</span>:
+  - <span style="color:#f92672">port</span>: <span style="color:#ae81ff">8080</span>
+    <span style="color:#f92672">targetPort</span>: <span style="color:#ae81ff">http</span>
+    <span style="color:#f92672">protocol</span>: <span style="color:#ae81ff">TCP</span>
+    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">http</span>
+  <span style="color:#f92672">selector</span>:
+    <span style="color:#f92672">app.kubernetes.io/name</span>: {{<span style="color:#ae81ff">.Chart.Name}}-wp</span>
+    <span style="color:#f92672">app.kubernetes.io/instance</span>: {{ <span style="color:#ae81ff">.Release.Name }}</span>
+</code></pre></div><h4 id="ingress">Ingress 
+    <a href="#ingress" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>If you are running an ingress controller (Treafik if on K3s), you can set up an ingress as well. To do so you will need to use a DNS entry or a service like xip.io or omg.howdoit.website to fake a DNS!</p>
+<p>I&rsquo;ll be using omg.howdoi.website because it&rsquo;s a fun domain name.</p>
+<p>To do this, I&rsquo;ll use an Ingress object in <code>wp-ingress.yaml</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">{{- <span style="color:#ae81ff">if .Values.ingress.enabled -}}</span>
+<span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">networking.k8s.io/v1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Ingress</span>
+<span style="color:#f92672">metadata</span>:
+  <span style="color:#f92672">name</span>: {{ <span style="color:#ae81ff">.Release.Name }}-wp</span>
+  <span style="color:#f92672">labels</span>:
+    <span style="color:#f92672">helm.sh/chart</span>: {{<span style="color:#ae81ff">.Chart.Name}}-{{.Chart.Version}}</span>
+    <span style="color:#f92672">app.kubernetes.io/managed-by</span>: {{ <span style="color:#ae81ff">.Release.Service }}</span>
+    <span style="color:#f92672">app.kubernetes.io/version</span>: {{ <span style="color:#ae81ff">.Chart.AppVersion | quote }}</span>
+    <span style="color:#f92672">app.kubernetes.io/name</span>: {{<span style="color:#ae81ff">.Chart.Name}}-wp</span>
+    <span style="color:#f92672">app.kubernetes.io/instance</span>: {{ <span style="color:#ae81ff">.Release.Name }}</span>
+<span style="color:#f92672">spec</span>:
+  <span style="color:#f92672">rules</span>:
+  - <span style="color:#f92672">host</span>: {{ <span style="color:#ae81ff">.Values.ingress.host | quote }}</span>
+    <span style="color:#f92672">http</span>:
+      <span style="color:#f92672">paths</span>:
+      - <span style="color:#f92672">path</span>: <span style="color:#e6db74">&#34;/&#34;</span>
+        <span style="color:#f92672">pathType</span>: <span style="color:#ae81ff">Prefix</span>
+        <span style="color:#f92672">backend</span>:
+          <span style="color:#f92672">service</span>: 
+            <span style="color:#f92672">name</span>: {{ <span style="color:#ae81ff">.Release.Name }}-wp</span>
+            <span style="color:#f92672">port</span>: 
+              <span style="color:#f92672">number</span>: <span style="color:#ae81ff">8080</span>
+{{- <span style="color:#ae81ff">end }}</span>
+</code></pre></div><p>What&rsquo;s a little more interesting about this, is that it uses an <code>if</code> statement to only create this object if the value is true (which we&rsquo;ve set as the default).</p>
+<h4 id="running">Running 
+    <a href="#running" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>To install this, I ran:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">helm upgrade --install wordpress-sample ./ --set ingress.host<span style="color:#f92672">=</span>wordpress-demo.192.168.1.12.omg.howdoi.website
+</code></pre></div><p>I can see the Pods getting created when I run:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl get pods
+</code></pre></div><p>I can then browse to wordpress-demo.192.168.1.12.omg.howdoi.website and get the standard WordPress guided install page! Yay!</p>
 <h2 id="pros">Pros 
     <a href="#pros" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
