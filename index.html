@@ -944,11 +944,59 @@
   
   
 </div>
-<h2 id="why-not-just-use-the-published-cncf-landscape">Why not just use the published CNCF Landscape? 
+<h3 id="why-not-just-use-the-published-cncf-landscape">Why not just use the published CNCF Landscape? 
     <a href="#why-not-just-use-the-published-cncf-landscape" class="heading-link"><i class="eos-icons">link</i></a>
-</h2>
+</h3>
 <p>I went back and forth on this if I should or not. I think there&rsquo;s a lot of value in the CNCF landscape but it&rsquo;s too overly complex for programmers when not already familiar with Kubernetes and it&rsquo;s ecosystem.</p>
 <p>The goal here is to try to pull out the specific pieces and options that a developer (or team of developers) would need to know in a way that is accessible without the larger infrastructure background.</p>
+<h2 id="i-just-want-to-develop-where-should-i-start">I just want to develop! Where should I start? 
+    <a href="#i-just-want-to-develop-where-should-i-start" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<p>Even with this smaller landscape, there are still a lot of choices. If you are just getting started, here are a few stacks to try:</p>
+<h3 id="gitlab">Gitlab 
+    <a href="#gitlab" class="heading-link"><i class="eos-icons">link</i></a>
+</h3>
+<p>While it&rsquo;s not in the map above, Gitlab has an offering called <a href="https://about.gitlab.com/stages-devops-lifecycle/auto-devops/">Auto DevOps</a> if you don&rsquo;t want to run your own infrastructure. It just works.</p>
+<h3 id="beginner-friendly">Beginner Friendly 
+    <a href="#beginner-friendly" class="heading-link"><i class="eos-icons">link</i></a>
+</h3>
+<p>For a beginner friendly setup, I would recommend using:</p>
+<ul>
+<li><a href="https://k3s.io">K3S</a></li>
+</ul>
+<p>Makes it easy to install a Kubernetes cluster. If you are on Mac of Windows, <a href="https://minikube.sigs.k8s.io/docs/">Minikube</a> can be useful as well!</p>
+<ul>
+<li><a href="https://jenkins-x.io">Jenkins X</a></li>
+</ul>
+<p>Has made it very easy to get started from scratch without needing to learn the underlying platform. Try the quick start and then adapt to your own project!</p>
+<ul>
+<li><a href="https://github.com/cdr/code-server">Code Server</a></li>
+</ul>
+<p>Let&rsquo;s you edit your code in a browser from anywhere. It can be installed on a server somewhere, as a container, or in Kubernetes directly (with some extra work to configure).</p>
+<ul>
+<li><a href="https://opentelemetry.io">OpenTelemetry</a></li>
+</ul>
+<p>While this isn&rsquo;t a single tool, I would highly recommend learning how to instrument your code in a way that is friendly to micro-services. Your life as a developer will get much nicer when you don&rsquo;t have to dig around in each container trying to find where a bug happened.</p>
+<h3 id="my-personal-setup">My Personal Setup 
+    <a href="#my-personal-setup" class="heading-link"><i class="eos-icons">link</i></a>
+</h3>
+<p>For my own use, I tend to like building my own &ldquo;platform&rdquo; to work with so my flow is a little more complicated to set up:</p>
+<ul>
+<li><a href="https://k3s.io">K3S</a></li>
+</ul>
+<p>I love the simplicity of this project.</p>
+<ul>
+<li><a href="https://tekton.dev">Tekton CI/CD</a></li>
+</ul>
+<p>This let&rsquo;s me write scripts that might be outside of projects in a way that works the way I think about code.</p>
+<ul>
+<li><a href="https://buildpacks.io">Cloud Native Buildpacks</a></li>
+</ul>
+<p>I&rsquo;m still adopting my pipelines to this but I really like it do far. I know the concepts from Heroku and Cloud Foundry. Using this instead of Dockerfiles can let me streamline projects without needing to write individual builds.</p>
+<ul>
+<li><a href="https://github.com/cdr/code-server">Code Server</a></li>
+</ul>
+<p>I customized Code Server to run on top of the OpenSUSE base container. This let&rsquo;s me use all the tools that I&rsquo;m already familiar with without any issues!</p>
 <h2 id="contributing">Contributing 
     <a href="#contributing" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
