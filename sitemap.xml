@@ -98,6 +98,16 @@
   </url>
   
   <url>
+    <loc>http://localhost:1313/reviews/misc/inlets/</loc>
+    <lastmod>2020-12-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/reviews/misc/openapi/</loc>
+    <lastmod>2020-12-07T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://localhost:1313/reviews/container-builds/cloudnative-buildpacks/</loc>
     <lastmod>2020-12-04T08:49:26-08:00</lastmod>
   </url>

@@ -175,6 +175,24 @@ One of it&amp;rsquo;s unique selling points is that it separates the process (Pi
     </item>
     
     <item>
+      <title>Inlets</title>
+      <link>http://localhost:1313/reviews/misc/inlets/</link>
+      <pubDate>Mon, 07 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/reviews/misc/inlets/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OpenAPI Specification</title>
+      <link>http://localhost:1313/reviews/misc/openapi/</link>
+      <pubDate>Mon, 07 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/reviews/misc/openapi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Buildpacks</title>
       <link>http://localhost:1313/reviews/container-builds/cloudnative-buildpacks/</link>
       <pubDate>Fri, 04 Dec 2020 08:49:26 -0800</pubDate>
