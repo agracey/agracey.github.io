@@ -479,11 +479,105 @@ sudo echo <span style="color:#e6db74">`</span>whoami<span style="color:#e6db74">
     <a href="#sample" class="heading-link"><i class="eos-icons">link</i></a>
 </h3>
 <p>For this sample, we are going to create a simple Nginx container based on OpenSUSE.</p>
-<p>First things, to run rootless, we will likely need to enter a &ldquo;shared namespace&rdquo; so that our permissions can bridge between different container contexts:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">buildah unshare
-</code></pre></div><p>This will put us into a new shell.</p>
-<p>To start a new container build we can run:</p>
-<p>(TODO: complete)</p>
+<h4 id="base-layer">Base Layer 
+    <a href="#base-layer" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>Create the base layer and hold on to the name for later steps.</p>
+<p>For ease of instruction we will start with a OpenSUSE specific base layer (which I choose to trust). For containers without dependencies (where the application is a compiled binary), you can use <code>buildah from scratch</code> to start with an empty layer.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ctr<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>buildah from <span style="color:#e6db74">&#34;registry.opensuse.org/opensuse/leap:15.2&#34;</span><span style="color:#66d9ef">)</span>
+</code></pre></div><p>NOTE: For most scripts it’s easier to just capture it in the first step and just use it as a variable. If you are doing this manually,the value can be found as the Container ID in the output of:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">buildah containers
+</code></pre></div><h4 id="installing-packages">Installing packages 
+    <a href="#installing-packages" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>Now that we have the base layers of the container, let’s add to it. There are two ways to go about this:</p>
+<ul>
+<li>Mount the container filesystem and use zypper (or any package manager) to install into it</li>
+<li>Run zypper (or any package manager) from inside the container</li>
+<li>Copy only relevant files into the right directory</li>
+</ul>
+<p>Each of these options have their time and place. As we are running rootless, we cannot run our package manager from the host so the first option is out. Since we want to use our package manager to install nginx and all of it&rsquo;s needed dependencies, we will run zypper from inside the container.</p>
+<p>This is done with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">buildah run $ctr zypper in nginx
+</code></pre></div><p>This will need to update the registry metadata then will install nginx into the container.</p>
+<h4 id="committing-the-layer">Committing the layer 
+    <a href="#committing-the-layer" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>It&rsquo;s good practice to split your images into logical layers. This does two things: You don&rsquo;t have to continually rebuild your image from scratch, and different nodes can share any common layers between them instead of having to re-download full images each time.</p>
+<p>We can commit the layer and then continue building onto it using:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">image<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>buildah commit --rm $ctr leap_with_nginx<span style="color:#66d9ef">)</span>
+ctr<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>buildah from $image<span style="color:#66d9ef">)</span>
+echo $ctr
+</code></pre></div><p>Note: The <code>--rm</code> flag instructs buildah to remove the previous working container after committing. This way we don&rsquo;t waste storage.</p>
+<h4 id="writing-nginx-config">Writing Nginx Config 
+    <a href="#writing-nginx-config" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>Next we will write the nginx config needed to tell it how to host our files.</p>
+<p>To do this we will mount the container filesystem to a place we can access from the host. There is a little weirdness in this step sicne we are running as a non-root user and we will need to run in a shared user namespace. To do this, run:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">podman unshare 
+</code></pre></div><p>This will start a shell in a separate linux namespace where we have more permissions but are still safely segmented out from the rest of the system. Please note that the variables we were using don&rsquo;t come with us (which is the reason for echoing it out in the previous step).</p>
+<p>To mount the container we are working on we can use:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ctr<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;leap_with_nginx-working-container&#34;</span> <span style="color:#75715e"># or the output of `echo $ctr` above</span>
+ctr_wd<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>buildah mount $ctr<span style="color:#66d9ef">)</span>
+</code></pre></div><p>The stored output tells you where to find the root of the container&rsquo;s filesystem.</p>
+<p>Using your favorite editor, create a new file at $ctr_wd/app/nginx.conf and add the following content. This will instruct nginx to listen on port 8080, run as an executable, and host files from /app/srv. Note that you will need to create the containing folder with <code>mkdir -p $ctr_wd/app</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx.conf" data-lang="nginx.conf"><span style="color:#66d9ef">worker_processes</span> <span style="color:#ae81ff">1</span>;
+<span style="color:#66d9ef">error_log</span> <span style="color:#e6db74">stderr</span>;
+<span style="color:#66d9ef">daemon</span> <span style="color:#66d9ef">off</span>;
+<span style="color:#66d9ef">pid</span> <span style="color:#e6db74">nginx.pid</span>;
+
+<span style="color:#66d9ef">events</span> {
+  <span style="color:#f92672">worker_connections</span> <span style="color:#ae81ff">1024</span>;
+}
+
+<span style="color:#66d9ef">http</span> {
+  <span style="color:#f92672">include</span> <span style="color:#e6db74">/etc/nginx/mime.types</span>;
+  <span style="color:#f92672">default_type</span> <span style="color:#e6db74">application/octet-stream</span>;
+  <span style="color:#f92672">sendfile</span> <span style="color:#66d9ef">on</span>;
+  <span style="color:#f92672">keepalive_timeout</span> <span style="color:#ae81ff">65</span>;
+
+  <span style="color:#f92672">server</span> {
+    <span style="color:#f92672">listen</span> <span style="color:#ae81ff">8080</span>;
+  
+    <span style="color:#f92672">location</span> <span style="color:#e6db74">/</span> {
+      <span style="color:#f92672">root</span> <span style="color:#e6db74">/app/srv/</span>;
+      <span style="color:#f92672">index</span> <span style="color:#e6db74">index.html</span> <span style="color:#e6db74">index.htm</span>;
+    }
+  }
+}
+</code></pre></div><h4 id="adding-manifest">Adding Manifest 
+    <a href="#adding-manifest" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>We need to add some config into the container manifest so it knows what to run when started. This is done with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">buildah config --cmd <span style="color:#e6db74">&#39;&#39;</span> $ctr
+buildah config --entrypoint <span style="color:#e6db74">&#39;[&#34;/usr/sbin/nginx&#34;,&#34;-c&#34;,&#34;/app/nginx.conf&#34;,&#34;-p&#34;,&#34;/app/&#34;]&#39;</span> $ctr
+</code></pre></div><p>This will set up our container to start nginx with our newly created configuration when the container starts and to not attempt to run the default bash command.</p>
+<h4 id="committing-layer">Committing Layer 
+    <a href="#committing-layer" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>With those changes, we should commit again and then remount it with the following sequence of commands:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">image<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>buildah commit --rm $ctr leap_with_nginx_configured<span style="color:#66d9ef">)</span>
+ctr<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>buildah from $image<span style="color:#66d9ef">)</span>
+ctr_wd<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>buildah mount $ctr<span style="color:#66d9ef">)</span>
+</code></pre></div><h4 id="adding-content">Adding content 
+    <a href="#adding-content" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>Now, with the new layer built and mounted, let’s actually add content to host into it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir $ctr_wd/app/srv
+echo <span style="color:#e6db74">&#34;Hello, World! I&#39;m stuck in a container!&#34;</span> &gt; $ctr_wd/app/srv/index.html
+</code></pre></div><p>While this is a trivial example so I just echo in some content. From this shared namespace, I can copy over files from the host as well.</p>
+<h4 id="committing-final-layer">Committing Final Layer 
+    <a href="#committing-final-layer" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>Lastly, let’s commit that container for us to run:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">buildah commit --rm $ctr my_hello_world
+exit
+</code></pre></div><h4 id="running-container-locally">Running Container Locally 
+    <a href="#running-container-locally" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>Now that the container is created, we can run it locally using <code>podman</code> with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">podman run -p 8080:8080 my_hello_world
+</code></pre></div><p>This will run with the terminal attached so you can see any output from the command. When you browse to <code>http://127.0.0.1:8080/</code> you should see the hello world in the browse and will likely see an error about a missing favicon in the command line. We didn&rsquo;t add one so that&rsquo;s expected.</p>
 <h4 id="signing-the-container-todo-learn-and-write">Signing the Container (TODO: learn and write) 
     <a href="#signing-the-container-todo-learn-and-write" class="heading-link"><i class="eos-icons">link</i></a>
 </h4>
@@ -503,6 +597,7 @@ sudo echo <span style="color:#e6db74">`</span>whoami<span style="color:#e6db74">
 <li>Permissions can be a bit confusing when in nested namespaces</li>
 <li>More complicated than similar tools</li>
 <li>Might be difficult to tie into CI/CD systems</li>
+<li>Documentation is a bit hard to follow if you aren&rsquo;t very familiar with how containers are built</li>
 </ul>
 <h2 id="ideal-projects">Ideal Projects 
     <a href="#ideal-projects" class="heading-link"><i class="eos-icons">link</i></a>
