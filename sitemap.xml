@@ -3,12 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://localhost:1313/reviews/abstractions/helm/</loc>
-    <lastmod>2021-02-01T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/reviews/</loc>
+    <lastmod>2021-02-16T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://localhost:1313/reviews/</loc>
+    <loc>http://localhost:1313/reviews/debugging-and-observability/telepresence/</loc>
+    <lastmod>2021-02-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://localhost:1313/reviews/abstractions/helm/</loc>
     <lastmod>2021-02-01T00:00:00+00:00</lastmod>
   </url>
   
@@ -45,11 +50,6 @@
   <url>
     <loc>http://localhost:1313/reviews/debugging-and-observability/pixie/</loc>
     <lastmod>2020-12-07T08:05:39-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/reviews/debugging-and-observability/telepresence/</loc>
-    <lastmod>2020-12-07T08:05:30-08:00</lastmod>
   </url>
   
   <url>

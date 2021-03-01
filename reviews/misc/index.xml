@@ -13,7 +13,7 @@
       <pubDate>Mon, 07 Dec 2020 08:05:22 -0800</pubDate>
       
       <guid>http://localhost:1313/reviews/misc/svc-cat/</guid>
-      <description></description>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Mon, 07 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/reviews/misc/inlets/</guid>
-      <description></description>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
     <item>
@@ -31,7 +31,7 @@
       <pubDate>Mon, 07 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>http://localhost:1313/reviews/misc/openapi/</guid>
-      <description></description>
+      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     
   </channel>

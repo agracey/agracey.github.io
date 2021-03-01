@@ -8,6 +8,15 @@
     <language>en-us</language>
     <lastBuildDate>Fri, 04 Dec 2020 08:48:59 -0800</lastBuildDate><atom:link href="http://localhost:1313/reviews/debugging-and-observability/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Telepresence</title>
+      <link>http://localhost:1313/reviews/debugging-and-observability/telepresence/</link>
+      <pubDate>Tue, 16 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/reviews/debugging-and-observability/telepresence/</guid>
+      <description>Experience link  Design link  Review link  Prior knowledge needed link     Installation link  What privileges are needed link   Root or Sudo on a Linux host to install cli   Steps link  Sample link  Pros link     Cons link     Ideal Projects link  Conclusion link  </description>
+    </item>
+    
+    <item>
       <title>Rookout</title>
       <link>http://localhost:1313/reviews/debugging-and-observability/rookout/</link>
       <pubDate>Mon, 07 Dec 2020 08:05:43 -0800</pubDate>
@@ -26,21 +35,13 @@
     </item>
     
     <item>
-      <title>Telepresence</title>
-      <link>http://localhost:1313/reviews/debugging-and-observability/telepresence/</link>
-      <pubDate>Mon, 07 Dec 2020 08:05:30 -0800</pubDate>
-      
-      <guid>http://localhost:1313/reviews/debugging-and-observability/telepresence/</guid>
-      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
-    </item>
-    
-    <item>
       <title>Opentelemetry</title>
       <link>http://localhost:1313/reviews/debugging-and-observability/opentelemetry/</link>
       <pubDate>Mon, 07 Dec 2020 08:05:22 -0800</pubDate>
       
       <guid>http://localhost:1313/reviews/debugging-and-observability/opentelemetry/</guid>
-      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
+      <description>OpenTelemetry is a set of specifications, tools, and best practices for instrumenting code for observability. It was formed by OpenTracing and OpenCensus joining together and donating their work to the CNCF as a sandbox project.
+What is Observability link  Observability is all about exposing the inner structure of how data flows through a system to the people having to maintain the system. This can be exceedingly difficult in cloud native architectures as the data path can be across several components (likely maintained by several teams).</description>
     </item>
     
   </channel>

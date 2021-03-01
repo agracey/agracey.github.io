@@ -217,6 +217,11 @@ pre {
   margin-bottom: 8px;
 }
 
+
+p img {
+  width: 100%;
+}
+
 @media (max-width : 1024px) {
 
   .tool-category {
@@ -255,3 +260,4 @@ pre {
     font-size:smaller;
   }
 }
+
