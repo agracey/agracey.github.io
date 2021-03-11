@@ -382,10 +382,19 @@
       <p class='card-text'>
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#summary">Summary</a></li>
-    <li><a href="#experience">Experience</a></li>
+    <li><a href="#experience">Experience</a>
+      <ul>
+        <li><a href="#design">Design</a></li>
+      </ul>
+    </li>
     <li><a href="#review">Review</a>
       <ul>
+        <li><a href="#prior-knowledge-needed">Prior knowledge needed</a></li>
+        <li><a href="#sample">Sample</a>
+          <ul>
+            <li><a href="#build-dockerfile">Build dockerfile</a></li>
+          </ul>
+        </li>
         <li><a href="#pros">Pros</a></li>
         <li><a href="#cons">Cons</a></li>
       </ul>
@@ -411,24 +420,58 @@
 
   
 
-  <section class="tool-review"><h1 id="summary">Summary 
-    <a href="#summary" class="heading-link"><i class="eos-icons">link</i></a>
-</h1>
+  <section class="tool-review"><p>Skaffold allows you to quickly iterate while developing Kubernetes applications by automating the build, push, and deploy steps of a the cycle.</p>
+<p>It also comes with a nifty development mode to rebuild and deploy your application when a file changes. This can dramatically speed up your software development.</p>
 <h1 id="experience">Experience 
     <a href="#experience" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
+<h2 id="design">Design 
+    <a href="#design" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<p>Skaffold is completely client side and relies on the same config as <code>kubectl</code>. By default, it builds the container locally using Docker and pushes the container to your Dockerhub account. At the time of this writing, there are options for Buildpacks and Kaniko to allow for remote building of images.</p>
 <h1 id="review">Review 
     <a href="#review" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
+<h2 id="prior-knowledge-needed">Prior knowledge needed 
+    <a href="#prior-knowledge-needed" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<ul>
+<li>Container Basics</li>
+<li>Kubernetes Basics</li>
+</ul>
+<h2 id="sample">Sample 
+    <a href="#sample" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<p>This might be the shortest sample of all of these reviews due to how amazingly easy to use skaffold is!</p>
+<p>Since the maintainers of Skaffold have provided a <a href="https://github.com/GoogleContainerTools/skaffold/tree/master/examples">massive amount of samples to use</a>, I&rsquo;ll go with something they don&rsquo;t have but I&rsquo;ve used in a few other reviews: WordPress development.</p>
+<p>To do this, I need to build a few files for Skaffold to use:</p>
+<ul>
+<li>Dockerfile</li>
+<li>yaml files for deployment, service, and ingress</li>
+</ul>
+<h3 id="build-dockerfile">Build dockerfile 
+    <a href="#build-dockerfile" class="heading-link"><i class="eos-icons">link</i></a>
+</h3>
 <h2 id="pros">Pros 
     <a href="#pros" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
+<ul>
+<li>Easy to use</li>
+<li>Solves a real problem of how to quickly build and move images without needing to do it all manually.</li>
+<li>Takes care of much of the developer frustration in their inner loop with the <code>dev</code> command</li>
+</ul>
 <h2 id="cons">Cons 
     <a href="#cons" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
+<ul>
+<li>Exposes Kubernetes primitives to the developer</li>
+<li>Defaults to requiring full Docker installation</li>
+</ul>
 <h1 id="conclusion">Conclusion 
     <a href="#conclusion" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
+<p>Skaffold does a great job of solving the problem of how to get code running in a Kubernetes cluster. My main complaint with it is that there is too much infrastructure knowledge needed for the developer to be productive. That said, this could likely be fixed for some teams by having a collection of templates maintained by a team more familiar with Kubernetes.</p>
+<p>All in all, this is a fantastic tool if you are already bought into Kubernetes and just looking to make development faster!</p>
 </section>
 
         </div>

@@ -42,7 +42,9 @@ Experience link  Helm is likely one of the first tools that people get introduce
       <pubDate>Fri, 04 Dec 2020 08:48:36 -0800</pubDate>
       
       <guid>http://localhost:1313/reviews/abstractions/skaffold/</guid>
-      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
+      <description>Skaffold allows you to quickly iterate while developing Kubernetes applications by automating the build, push, and deploy steps of a the cycle.
+It also comes with a nifty development mode to rebuild and deploy your application when a file changes. This can dramatically speed up your software development.
+Experience link  Design link  Skaffold is completely client side and relies on the same config as kubectl. By default, it builds the container locally using Docker and pushes the container to your Dockerhub account.</description>
     </item>
     
   </channel>

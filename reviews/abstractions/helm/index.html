@@ -403,7 +403,11 @@
           <ul>
             <li><a href="#what-privileges-are-needed-to-install--use">What privileges are needed to install / use</a></li>
             <li><a href="#installation-steps">Installation Steps</a></li>
-            <li><a href="#sample">Sample</a></li>
+          </ul>
+        </li>
+        <li><a href="#sample">Sample</a>
+          <ul>
+            <li></li>
           </ul>
         </li>
         <li><a href="#pros">Pros</a></li>
@@ -467,9 +471,9 @@
 <p>On openSUSE, we can use zypper to install the Helm command:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo zypper in helm
 </code></pre></div><p>The tool itself is a golang binary so it&rsquo;s also possible to <a href="https://github.com/helm/helm/releases">install by downloading</a>.</p>
-<h3 id="sample">Sample 
+<h2 id="sample">Sample 
     <a href="#sample" class="heading-link"><i class="eos-icons">link</i></a>
-</h3>
+</h2>
 <p>As this is a Developer tools blog, let&rsquo;s build a sample chart that runs a default wordpress instance and mysql then sets up the environment variables and routing.</p>
 <p>NOTE: I&rsquo;m using the wordpress (and it&rsquo;s documentation) found in <a href="https://hub.docker.com/_/wordpress/">Docker Hub</a> to know what configuration is available.</p>
 <p>We start by creating some tempaltes to start with using:</p>
