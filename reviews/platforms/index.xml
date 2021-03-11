@@ -26,15 +26,6 @@
     </item>
     
     <item>
-      <title>Flynn</title>
-      <link>http://localhost:1313/reviews/platforms/flynn/</link>
-      <pubDate>Fri, 04 Dec 2020 08:44:10 -0800</pubDate>
-      
-      <guid>http://localhost:1313/reviews/platforms/flynn/</guid>
-      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
-    </item>
-    
-    <item>
       <title>Tsuru</title>
       <link>http://localhost:1313/reviews/platforms/tsuru/</link>
       <pubDate>Fri, 04 Dec 2020 08:43:57 -0800</pubDate>
@@ -71,15 +62,6 @@
     </item>
     
     <item>
-      <title>Rio</title>
-      <link>http://localhost:1313/reviews/platforms/rio/</link>
-      <pubDate>Fri, 04 Dec 2020 08:43:04 -0800</pubDate>
-      
-      <guid>http://localhost:1313/reviews/platforms/rio/</guid>
-      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
-    </item>
-    
-    <item>
       <title>Waypoint</title>
       <link>http://localhost:1313/reviews/platforms/waypoint/</link>
       <pubDate>Fri, 04 Dec 2020 08:42:58 -0800</pubDate>
@@ -94,15 +76,6 @@
       <pubDate>Fri, 04 Dec 2020 08:42:53 -0800</pubDate>
       
       <guid>http://localhost:1313/reviews/platforms/heroku/</guid>
-      <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
-    </item>
-    
-    <item>
-      <title>KubeCF</title>
-      <link>http://localhost:1313/reviews/platforms/kubecf/</link>
-      <pubDate>Fri, 04 Dec 2020 08:39:38 -0800</pubDate>
-      
-      <guid>http://localhost:1313/reviews/platforms/kubecf/</guid>
       <description>Summary link  Experience link  Review link  Pros link  Cons link  Conclusion link  </description>
     </item>
     

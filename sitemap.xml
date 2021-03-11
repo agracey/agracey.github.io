@@ -183,11 +183,6 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/reviews/platforms/flynn/</loc>
-    <lastmod>2020-12-04T08:44:10-08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://localhost:1313/reviews/platforms/tsuru/</loc>
     <lastmod>2020-12-04T08:43:57-08:00</lastmod>
   </url>
@@ -208,11 +203,6 @@
   </url>
   
   <url>
-    <loc>http://localhost:1313/reviews/platforms/rio/</loc>
-    <lastmod>2020-12-04T08:43:04-08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://localhost:1313/reviews/platforms/waypoint/</loc>
     <lastmod>2020-12-04T08:42:58-08:00</lastmod>
   </url>
@@ -220,11 +210,6 @@
   <url>
     <loc>http://localhost:1313/reviews/platforms/heroku/</loc>
     <lastmod>2020-12-04T08:42:53-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://localhost:1313/reviews/platforms/kubecf/</loc>
-    <lastmod>2020-12-04T08:39:38-08:00</lastmod>
   </url>
   
   <url>
