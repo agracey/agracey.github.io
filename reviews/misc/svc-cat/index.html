@@ -355,7 +355,7 @@
         
   <section class="tool-title">
     <h1>Review of <span>Service Catalog</span></h1>
-    <div class="author">Written Dec 7, 2020 by  -- </div>
+    <div class="author">Written Mar 15, 2021 by  -- </div>
   </section><dl class="tool-data pull-right">
     <div class='card'>
       <img class='card-img' src='/icons/cncf.png' alt='SUSE-logo' />
@@ -370,10 +370,21 @@
       <p class='card-text'>
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#summary">Summary</a></li>
-    <li><a href="#experience">Experience</a></li>
+    <li><a href="#experience">Experience</a>
+      <ul>
+        <li><a href="#design">Design</a></li>
+      </ul>
+    </li>
     <li><a href="#review">Review</a>
       <ul>
+        <li><a href="#prior-knowledge-needed">Prior knowledge needed</a></li>
+        <li><a href="#installation">Installation</a>
+          <ul>
+            <li><a href="#what-privileges-are-needed-to-install--use">What privileges are needed to install / use</a></li>
+            <li><a href="#installation-steps">Installation Steps</a></li>
+          </ul>
+        </li>
+        <li><a href="#example-usage">Example Usage</a></li>
         <li><a href="#pros">Pros</a></li>
         <li><a href="#cons">Cons</a></li>
       </ul>
@@ -394,24 +405,165 @@
 
   
 
-  <section class="tool-review"><h1 id="summary">Summary 
-    <a href="#summary" class="heading-link"><i class="eos-icons">link</i></a>
-</h1>
+  <section class="tool-review"><p>Service Catalog is a project in the CNCF ecosystem that allows administrators to create a marketplace of services to be installed then allows users of the platform to easily install and &ldquo;bind&rdquo; those services to their applications.</p>
+<p>On the back side, it&rsquo;s using the Open Service Broker API to allow for provisioning any services that have a broker created (or you can build your own if you want!). This means that you can pick from several off the shelf solutions based on</p>
+<p>While most uses are historically databases, you could use a service broker to set up and manage any type of external dependency.</p>
 <h1 id="experience">Experience 
     <a href="#experience" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
+<p>I&rsquo;ve used a few versions of the OpenService Broker before and also managed a publicly facing PaaS that used Minibroker. This is my first time using the Service Catalog Operator on Kubernetes though.</p>
+<h2 id="design">Design 
+    <a href="#design" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<p>Todo: list CRDs and their interactions</p>
 <h1 id="review">Review 
     <a href="#review" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
+<h2 id="prior-knowledge-needed">Prior knowledge needed 
+    <a href="#prior-knowledge-needed" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<ul>
+<li>Kubernetes basics</li>
+<li>Secret management</li>
+</ul>
+<h2 id="installation">Installation 
+    <a href="#installation" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<h3 id="what-privileges-are-needed-to-install--use">What privileges are needed to install / use 
+    <a href="#what-privileges-are-needed-to-install--use" class="heading-link"><i class="eos-icons">link</i></a>
+</h3>
+<p>Since it&rsquo;s built on Custom Resource Definitions (CRDs), we need to be cluster admin to install the framework itself. Once the operator and broker are installed, you can use the framework as a normal user with the right role bindings.</p>
+<h3 id="installation-steps">Installation Steps 
+    <a href="#installation-steps" class="heading-link"><i class="eos-icons">link</i></a>
+</h3>
+<p>The installation is a few steps but reasonably straightforward. I&rsquo;ll be using <a href="https://github.com/suse/minibroker">Minibroker</a> with a few basic customizations as my broker since it doesn&rsquo;t require any extra set up or accounts.</p>
+<h4 id="service-catalog-framework--operator">Service Catalog framework &amp; operator 
+    <a href="#service-catalog-framework--operator" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>The first piece to install is the operator itself. We can do this with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">helm repo add svc-cat https://kubernetes-sigs.github.io/service-catalog
+helm install catalog svc-cat/catalog --namespace catalog --create-namespace
+</code></pre></div><h4 id="minibroker">Minibroker 
+    <a href="#minibroker" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>Next we need a broker to provide services to the marketplace. Minibroker is self contained, so let&rsquo;s install it.</p>
+<p>First, we can optionally set up some overrides that ease our usage down the road using these values in <code>minibroker-values.yaml</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">provisioning</span>: 
+  <span style="color:#f92672">mariadb</span>:
+    <span style="color:#f92672">overrideParams</span>:
+      <span style="color:#f92672">db</span>:
+        <span style="color:#f92672">user</span>: <span style="color:#e6db74">&#34;dbuser&#34;</span>
+        <span style="color:#f92672">name</span>: <span style="color:#e6db74">&#34;default&#34;</span>
+
+  <span style="color:#f92672">postgresql</span>:
+    <span style="color:#f92672">overrideParams</span>:
+      <span style="color:#f92672">postgresqlDatabase</span>: <span style="color:#ae81ff">defaultdb</span>
+
+  <span style="color:#f92672">mongodb</span>:
+    <span style="color:#f92672">overrideParams</span>:
+      <span style="color:#f92672">mongodbDatabase</span>: <span style="color:#ae81ff">defaultdb</span>
+      <span style="color:#f92672">mongodbUsername</span>: <span style="color:#ae81ff">mongodbuser</span>
+</code></pre></div><p>This will make sure that the services that get installed by the broker have existing databases/schemas created!</p>
+<p>Next we can install minibroker with these values</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">helm repo add minibroker https://minibroker.blob.core.windows.net/charts
+helm install minibroker --namespace minibroker minibroker/minibroker --create-namespace -f minibroker-values.yaml
+</code></pre></div><p>This will install the broker and set up the registration between the service catalog operator and the broker itself.</p>
+<h4 id="svcat">svcat 
+    <a href="#svcat" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>Lastly, we probably want to install the command line tool to make managing services easier. We could work with custom resources directly, but the command line option makes it much easier!</p>
+<p>I&rsquo;ll use the <a href="https://svc-cat.io/docs/install/#linux">documented</a> Linux installation:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">curl -sLO https://download.svcat.sh/cli/latest/linux/amd64/svcat
+sudo chmod +x ./svcat
+sudo mv ./svcat /usr/local/bin/
+</code></pre></div><h2 id="example-usage">Example Usage 
+    <a href="#example-usage" class="heading-link"><i class="eos-icons">link</i></a>
+</h2>
+<p>As we have for a few other demos, let&rsquo;s set up a simple WordPress container with the database being provided by the broker. (I&rsquo;m likely going to use this same database across several different reviews!)</p>
+<p>First, let&rsquo;s look at the marketplace of services available using:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">svcat marketplace
+</code></pre></div><p>This will return a list of classes and their plans that are available to install. While plans might mean a variety of things depending on the broker, in minibroker it&rsquo;s the version of helm chart that will be installed.</p>
+<p>Since we can use MariaDB for the backend, and we see that the latest plan (version) available is 10-3-22, let&rsquo;s create one using:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">svcat provision wp-mariadb --class mariadb --plan 10-3-22
+</code></pre></div><p>This returns pretty immediately so we know that the creation is in progress. To check this progress we can use:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">svcat get instances
+</code></pre></div><p>While still in process, the status column on the right will say <code>Provisioning</code> and running <code>kubectl get po</code> will show mariadb getting set up!</p>
+<p>Once it&rsquo;s done, it&rsquo;ll say <code>Ready</code> and we can create a secret to bind with using</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">svcat bind wp-mariadb
+</code></pre></div><p>The secret can be viewed using:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl get secret wp-mariadb -o yaml
+</code></pre></div><p>At the top of the output, we can see the block of data that gets created. In it, there will be all the information needed to connect to our new database from an application (with each of the values being base64 encoded).</p>
+<p>With these values, we can pass the right environment variables to our wordpress deployment using <code>secretKeyRef:</code> in the <code>env</code> section of the container spec.</p>
+<p>Let&rsquo;s do that by creating a file called <code>wp-deploy.yaml</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">apiVersion</span>: <span style="color:#ae81ff">apps/v1</span>
+<span style="color:#f92672">kind</span>: <span style="color:#ae81ff">Deployment</span>
+<span style="color:#f92672">metadata</span>: 
+  <span style="color:#f92672">name</span>: <span style="color:#ae81ff">wp-deployment</span>
+  <span style="color:#f92672">labels</span>: 
+    <span style="color:#f92672">app</span>: <span style="color:#ae81ff">wordpress</span>
+<span style="color:#f92672">spec</span>: 
+  <span style="color:#f92672">replicas</span>: <span style="color:#ae81ff">1</span>
+  <span style="color:#f92672">selector</span>:
+    <span style="color:#f92672">matchLabels</span>:
+      <span style="color:#f92672">app</span>: <span style="color:#ae81ff">wordpress</span>
+  <span style="color:#f92672">template</span>: 
+    <span style="color:#f92672">metadata</span>: 
+      <span style="color:#f92672">labels</span>: 
+        <span style="color:#f92672">app</span>: <span style="color:#ae81ff">wordpress</span>
+    <span style="color:#f92672">spec</span>: 
+      <span style="color:#f92672">containers</span>: 
+      - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">wordpress</span>
+        <span style="color:#f92672">image</span>: <span style="color:#e6db74">&#34;docker.io/wordpress:5.7.0&#34;</span>
+        <span style="color:#f92672">imagePullPolicy</span>: <span style="color:#ae81ff">Always</span>
+        <span style="color:#f92672">env</span>: 
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">WORDPRESS_DB_HOST</span>
+          <span style="color:#f92672">valueFrom</span>:
+            <span style="color:#f92672">secretKeyRef</span>:
+              <span style="color:#f92672">name</span>: <span style="color:#ae81ff">wp-mariadb</span>
+              <span style="color:#f92672">key</span>: <span style="color:#ae81ff">host</span>
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">WORDPRESS_DB_USER</span>
+          <span style="color:#f92672">value</span>: <span style="color:#ae81ff">root</span>
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">WORDPRESS_DB_PASSWORD</span>
+          <span style="color:#f92672">valueFrom</span>:
+            <span style="color:#f92672">secretKeyRef</span>:
+              <span style="color:#f92672">name</span>: <span style="color:#ae81ff">wp-mariadb</span>
+              <span style="color:#f92672">key</span>: <span style="color:#ae81ff">mariadb-root-password</span>
+        - <span style="color:#f92672">name</span>: <span style="color:#ae81ff">WORDPRESS_DB_NAME</span>
+          <span style="color:#f92672">valueFrom</span>:
+            <span style="color:#f92672">secretKeyRef</span>:
+              <span style="color:#f92672">name</span>: <span style="color:#ae81ff">wp-mariadb</span>
+              <span style="color:#f92672">key</span>: <span style="color:#ae81ff">database</span>
+        <span style="color:#f92672">ports</span>: 
+          - <span style="color:#f92672">containerPort</span>: <span style="color:#ae81ff">80</span>
+</code></pre></div><p>Then deploying it with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl apply wp-deploy.yaml
+</code></pre></div><p>One thing to note in the above YAML, we are using the root user and password because WordPress needs the elevated privileges when it starts up. There is likely a way to change this, but as minibroker is not really for production workloads, it&rsquo;s merely an inconvenience.</p>
+<p>Next we can get our pod&rsquo;s name using:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl get po
+</code></pre></div><p>And use that to set up a port forward using (substituting in your pod&rsquo;s name):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kubectl port-forward &lt;pod name&gt; 8080:80
+</code></pre></div><p>Browse to http://localhost:8080/ to view your newly install wordpress with a database that was easy to configure!</p>
 <h2 id="pros">Pros 
     <a href="#pros" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
+<ul>
+<li>Easy to use</li>
+<li>Very flexible solution due to shared APIs</li>
+<li>Allows for good split in trust between platform maintainer and user</li>
+</ul>
 <h2 id="cons">Cons 
     <a href="#cons" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
+<ul>
+<li>Few supported brokers</li>
+<li>API spec is overly complex for the currently available ecosystem</li>
+</ul>
 <h1 id="conclusion">Conclusion 
     <a href="#conclusion" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
+<p>The Open Service Broker API is an idea that I feel like hasn&rsquo;t gotten enough love from the Kubernetes community. There does need to be a way for platform maintainers to expose self-service creation of services and OSBA does a decent job of this.</p>
+<p>What I would like to see is a v3 of the spec that is simpler by taking advantage of Kubernetes features and Cloud Native methodologies.</p>
+<p>As it stands, Service Catalog is definitely useful when building platforms for developers to use but might not be a great stand alone tool.</p>
 </section>
 
         </div>
