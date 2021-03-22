@@ -39,13 +39,13 @@
                 <ul class="menu-dropdown-list menu-element">
                 <li class="menu-collapsed-title">Developer Abstractions</li>
                 
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/skaffold/">Skaffold</a></li>
+                
                   <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/helm/">Helm</a></li>
                 
                   <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/devspace/">DevSpace</a></li>
                 
                   <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/backstage/">Backstage</a></li>
-                
-                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/skaffold/">Skaffold</a></li>
                 
                 </ul>
             </li>
@@ -205,13 +205,13 @@
                 <li class="menu-collapsed-title">Developer Abstractions</li>
 
                 
+                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/skaffold/">Skaffold</a></li>
+                
                   <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/helm/">Helm</a></li>
                 
                   <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/devspace/">DevSpace</a></li>
                 
                   <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/backstage/">Backstage</a></li>
-                
-                  <li><a class="menu-title js-select-current js-feature-flag " href="/reviews/abstractions/skaffold/">Skaffold</a></li>
                 
             </ul>
           </li>
@@ -381,7 +381,11 @@
   <ul>
     <li><a href="#experience">Experience</a>
       <ul>
-        <li><a href="#design">Design</a></li>
+        <li><a href="#design">Design</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
       </ul>
     </li>
     <li><a href="#review">Review</a>
@@ -424,7 +428,26 @@
 <h2 id="design">Design 
     <a href="#design" class="heading-link"><i class="eos-icons">link</i></a>
 </h2>
-<p>Todo: list CRDs and their interactions</p>
+<h4 id="service-classes">Service Classes 
+    <a href="#service-classes" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>A service class defines what a service is. For example, a PostgreSQL database or analytics API.</p>
+<h4 id="service-plans">Service Plans 
+    <a href="#service-plans" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>A service plan allows for some options within the choices. For example, with a database, you could have individual plans for shared databases vs private vs cloud based, etc. While the API for each is the same, the characteristics will be different for each use-case.</p>
+<h4 id="service-instance">Service Instance 
+    <a href="#service-instance" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>A service instance is just that, it&rsquo;s an instance of a service that&rsquo;s been created with the broker. You can create, update, and delete these objects and the broker will do the same for the provisioned infrastructure.</p>
+<h4 id="service-binding">Service Binding 
+    <a href="#service-binding" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>A service binding gives a way to publish connection information to an application. Historically, in Cloud Foundry, this was done by the VCAP_SERVICES environment variable. In Kubernetes, this is done with a Secret that can be attached to a container in a variety of ways.</p>
+<h4 id="service-broker">Service Broker 
+    <a href="#service-broker" class="heading-link"><i class="eos-icons">link</i></a>
+</h4>
+<p>A service broker is responsible for managing how each of the API objects relate to the infrastructure being provisioned. It needs to make sure that the infrastructure is kept in in-sync with what the platform expects.</p>
 <h1 id="review">Review 
     <a href="#review" class="heading-link"><i class="eos-icons">link</i></a>
 </h1>
