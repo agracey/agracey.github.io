@@ -1,0 +1,31 @@
+baseURL = 'http://blog.gracey.dev/'
+languageCode = 'en-us'
+title = "A Blog"
+theme = 'hugo-theme-m10c'
+
+[menu]
+  [[menu.main]]
+    identifier = "home"
+    name = "Home"
+    url = "/"
+    weight = 1
+
+[params]
+author = "Andrew Gracey"
+description = 'Experiments, soon to be abandoned projects, and other things that I find interesting!'
+menu_item_separator = " - "
+
+[[params.social]]
+icon = "github"
+name = "My Github"
+url = "https://github.com/agracey"
+
+[[params.social]]
+icon = "twitter"
+name = "Mastadon"
+url = "https://fosstodon.org/@agracey"
+
+[[params.social]]
+icon = "linkedin"
+name = "LinkedIn"
+url = "https://www.linkedin.com/in/andrew-gracey/"
